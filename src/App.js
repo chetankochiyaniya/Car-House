@@ -6,6 +6,7 @@ import AllCars from './components/Cars/AllCars'
 import CardDetails from './components/Cars/CarDetails'
 import About from './components/About'
 import Contact from './components/Contact'
+import Team from './components/Team'
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/car-details" element={<CardDetails />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/team" element={<Team />} />
       </Routes>
     </>
   )
