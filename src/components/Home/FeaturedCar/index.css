@@ -1,0 +1,43 @@
+/* 
+---------------------------------------------
+Featured Cars
+--------------------------------------------- 
+*/
+
+#cards {
+  padding-bottom: 90px;
+}
+
+#cards .card-item {
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  margin-bottom: 30px;
+}
+
+#cards .card-item img {
+  width: 100%;
+  border-radius: 5px;
+}
+
+#cards .card-item span {
+  font-size: 13px;
+  font-weight: 500;
+  color: #ed563b;
+  display: inline-block;
+  margin-top: 25px;
+  margin-bottom: 10px;
+}
+
+#cards .card-item h4 {
+  font-size: 19px;
+  font-weight: 600;
+  color: #232d39;
+  letter-spacing: 0.5px;
+  margin-bottom: 18px;
+}
+
+#cards .card-item p {
+  margin-bottom: 20px;
+}

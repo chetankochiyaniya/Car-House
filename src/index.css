@@ -1,0 +1,45 @@
+:root {
+  --red-color: #ed563b;
+  --btn-hover: #ec3e1fbb;
+
+  --white-color: #fff;
+
+  --over-bg-color: rgba(35, 45, 57, 0.8);
+
+  --navbar-bg: #1e1e1e;
+  --link-color: #007bff;
+
+  --b-text: #000000;
+}
+
+.em-color {
+  color: var(--red-color);
+}
+
+/* 
+---------------------------------------------
+global styles
+--------------------------------------------- 
+*/
+html,
+body {
+  background: #fff;
+  font-family: 'Poppins', sans-serif;
+}
+
+::selection {
+  background: var(--red-color);
+  color: var(--white-color);
+}
+
+::-moz-selection {
+  background: var(--red-color);
+  color: var(--white-color);
+}
+
+@media (max-width: 991px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+}
