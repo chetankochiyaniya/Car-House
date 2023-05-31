@@ -2,10 +2,12 @@ import React from 'react'
 import * as Yup from 'yup'
 import { Formik, Form, ErrorMessage } from 'formik'
 import TextField from './TextField.js'
+import { useDispatch, useSelector } from 'react-redux'
+import { HandleModel, UpdateCustomError, UserSignUp } from '../../../redux/actions'
 
 export default function SignUp() {
   const validate = Yup.object({
-    firstName: Yup.string().required('Firstname Required!'),
+    fullName: Yup.string().required('fullName Required!'),
     email: Yup.string().email('Email is invalid!').required('Email Required!'),
     password: Yup.string()
       .min(4, 'Password must be minimum 4 digits!')
@@ -15,17 +17,31 @@ export default function SignUp() {
       .required('Confirm password is required!')
   })
 
+  const dispatch = useDispatch()
+
+  const customError = useSelector((state) => state.userManagementReducer.customError)
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={validate}
         onSubmit={(values) => {
-          alert(JSON.stringify(values, null, 2))
+          const { fullName, email, password } = values
+          dispatch(
+            UserSignUp({
+              name: fullName,
+              email: email,
+              password: password
+            }),
+            customError !== null
+              ? (alert('User is already exists'), dispatch(UpdateCustomError(null)))
+              : (alert('Suscfully sign in please go for sign up'), dispatch(HandleModel(false)))
+          )
         }}>
         {(formik) => (
           <Form className="form p-3">
-            <TextField type="text" label={'Firstname'} name="firstName" placeholder="Lorem" />
+            <TextField type="text" label="Full Name" name="fullName" placeholder="Lorem" />
             <TextField type="email" name="email" label="Email" placeholder="loremipsum@gmail.com" />
             <TextField type="password" name="password" label="Password" placeholder="qwert@123" />
             <div className="mb-2">
@@ -44,7 +60,7 @@ export default function SignUp() {
               <ErrorMessage component="div" name="confirmPassword" className="error" />
             </div>
             <button className="btn btn-dark" type="submit">
-              Register
+              Submit
             </button>
             <button className="btn btn-primary m-3" type="reset">
               Reset
@@ -57,7 +73,7 @@ export default function SignUp() {
 }
 
 const initialValues = {
-  firstName: '',
+  fullName: '',
   email: '',
   password: '',
   confirmPassword: ''

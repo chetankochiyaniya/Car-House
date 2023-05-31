@@ -12,27 +12,42 @@ import MenuItem from '@mui/material/MenuItem'
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave'
 import { useNavigate } from 'react-router-dom'
 import AuthModel from '../../Auth/AuthModel'
+import { useDispatch, useSelector } from 'react-redux'
+import { HandleModel, UserSignOut } from '../../../redux/actions'
+import { Avatar, Divider, Tooltip } from '@mui/material'
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null)
-  const [openSignUp, setOpenSignUp] = useState(false)
+  const [anchorElUser, setAnchorElUser] = React.useState(null)
   const navigate = useNavigate()
+  const { modelOpen, loggedInUser } = useSelector((state) => state.userManagementReducer)
+
+  const dispatch = useDispatch()
 
   const handleOpenNavMenu = (event) => {
     setAnchorElNav(event.currentTarget)
   }
 
   const handleCloseNavMenu = (path) => {
+    path && navigate(path)
     setAnchorElNav(null)
-    navigate(path)
   }
 
   const handleOpenSignUp = () => {
-    setOpenSignUp(true)
+    console.log('test test')
+    dispatch(HandleModel(true))
   }
 
   const handleCloseSignUp = () => {
-    setOpenSignUp(false)
+    dispatch(HandleModel(false))
+  }
+
+  const handleOpenUserMenu = (event) => {
+    setAnchorElUser(event.currentTarget)
+  }
+
+  const handleCloseUserMenu = () => {
+    setAnchorElUser(null)
   }
 
   return (
@@ -85,7 +100,7 @@ function Navbar() {
                   horizontal: 'left'
                 }}
                 open={Boolean(anchorElNav)}
-                onClose={handleCloseNavMenu}
+                onClose={() => handleCloseNavMenu(null)}
                 sx={{
                   display: { xs: 'block', md: 'none' }
                 }}>
@@ -103,9 +118,6 @@ function Navbar() {
                 </MenuItem>
                 <MenuItem onClick={() => handleCloseNavMenu('/team')}>
                   <Typography textAlign="center">Team</Typography>
-                </MenuItem>
-                <MenuItem onClick={handleOpenSignUp}>
-                  <Typography textAlign="center">LogIn</Typography>
                 </MenuItem>
               </Menu>
             </Box>
@@ -162,14 +174,64 @@ function Navbar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}>
                 Team
               </Button>
-              <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenSignUp}>
-                Login
-              </Button>
             </Box>
+            {loggedInUser == null ? (
+              <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenSignUp}>
+                <i className="fa fa-sign-in fa-2x" aria-hidden="true"></i>
+              </Button>
+            ) : (
+              <Box sx={{ flexGrow: 0 }}>
+                <Tooltip title="Open settings">
+                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ms: 2 }}>
+                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                  </IconButton>
+                </Tooltip>
+                <Menu
+                  sx={{ mt: '45px' }}
+                  id="menu-appbar"
+                  anchorEl={anchorElUser}
+                  anchorOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  keepMounted
+                  transformOrigin={{
+                    vertical: 'top',
+                    horizontal: 'right'
+                  }}
+                  open={Boolean(anchorElUser)}
+                  onClose={handleCloseUserMenu}>
+                  <Typography sx={{ marginLeft: 2, marginRight: 2, fontWeight: 700 }}>
+                    Profile Info
+                  </Typography>
+                  <Divider />
+                  <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
+                    name: {loggedInUser.values.name}
+                  </Typography>
+                  <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
+                    email: {loggedInUser.values.email}
+                  </Typography>
+                  <Divider />
+                  <Divider />
+                  <MenuItem onClick={handleCloseUserMenu}>
+                    <Button
+                      variant="contained"
+                      size="small"
+                      sx={{
+                        backgroundColor: 'var(--red-color)',
+                        '&:hover': { backgroundColor: 'var(--btn-hover)' }
+                      }}
+                      onClick={() => dispatch(UserSignOut())}>
+                      SignOut
+                    </Button>
+                  </MenuItem>
+                </Menu>
+              </Box>
+            )}
           </Toolbar>
         </Container>
       </AppBar>
-      <AuthModel open={openSignUp} onClose={handleCloseSignUp} />
+      <AuthModel open={modelOpen} onClose={handleCloseSignUp} />
     </>
   )
 }

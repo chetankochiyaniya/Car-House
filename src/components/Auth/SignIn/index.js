@@ -2,7 +2,8 @@ import React from 'react'
 import * as Yup from 'yup'
 import { Formik, Form } from 'formik'
 import TextField from './TextField.js'
-import { Link } from '@mui/material'
+import { useDispatch, useSelector } from 'react-redux'
+import { HandleModel, UserSignIn, UpdateCustomError } from '../../../redux/actions/index.js'
 
 export default function SignIn() {
   const validate = Yup.object({
@@ -12,28 +13,36 @@ export default function SignIn() {
       .required('Password Required!')
   })
 
+  const dispatch = useDispatch()
+  const customError = useSelector((state) => state.userManagementReducer.customError)
+
   return (
     <>
       <Formik
         initialValues={initialValues}
         validationSchema={validate}
         onSubmit={(values) => {
-          alert(JSON.stringify(values, null, 2))
+          const { email, password } = values
+          dispatch(
+            UserSignIn({
+              email: email,
+              password: password
+            }),
+            customError !== null
+              ? (alert('Invalid email or password'), dispatch(UpdateCustomError(null)))
+              : (alert('Suscfully SignIn'), dispatch(HandleModel(false)))
+          )
         }}>
         {(formik) => (
           <Form className="form p-3 mt-5">
             <TextField type="email" name="email" label="Email" placeholder="loremipsum@gmail.com" />
             <TextField type="password" name="password" label="Password" placeholder="qwert@123" />
             <button className="btn btn-dark" type="submit">
-              Sign In
+              Submit
             </button>
             <button className="btn btn-primary m-3" type="reset" onClick={formik.handleReset}>
               Reset
             </button>
-            <br />
-            <Link href="#" variant="body2">
-              Forgot password?
-            </Link>
           </Form>
         )}
       </Formik>
@@ -42,7 +51,7 @@ export default function SignIn() {
 }
 
 const initialValues = {
-  firstName: '',
+  fullName: '',
   email: '',
   password: '',
   confirmPassword: ''
