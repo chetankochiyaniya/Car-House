@@ -21,7 +21,6 @@ function Navbar() {
   const [anchorElUser, setAnchorElUser] = React.useState(null)
   const navigate = useNavigate()
   const { modelOpen, loggedInUser } = useSelector((state) => state.userManagementReducer)
-
   const dispatch = useDispatch()
 
   const handleOpenNavMenu = (event) => {
@@ -34,7 +33,6 @@ function Navbar() {
   }
 
   const handleOpenSignUp = () => {
-    console.log('test test')
     dispatch(HandleModel(true))
   }
 
@@ -206,10 +204,10 @@ function Navbar() {
                   </Typography>
                   <Divider />
                   <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
-                    name: {loggedInUser.values.name}
+                    name: {loggedInUser[0].values.name}
                   </Typography>
                   <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
-                    email: {loggedInUser.values.email}
+                    email: {loggedInUser[0].values.email}
                   </Typography>
                   <Divider />
                   <Divider />

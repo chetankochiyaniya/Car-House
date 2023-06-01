@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import { Formik, Form } from 'formik'
 import TextField from './TextField.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { HandleModel, UserSignIn, UpdateCustomError } from '../../../redux/actions/index.js'
+import { UserSignIn, HandleModel } from '../../../redux/actions/index.js'
 
 export default function SignIn() {
   const validate = Yup.object({
@@ -14,7 +14,7 @@ export default function SignIn() {
   })
 
   const dispatch = useDispatch()
-  const customError = useSelector((state) => state.userManagementReducer.customError)
+  const users = useSelector((state) => state.userManagementReducer.users)
 
   return (
     <>
@@ -23,15 +23,21 @@ export default function SignIn() {
         validationSchema={validate}
         onSubmit={(values) => {
           const { email, password } = values
-          dispatch(
-            UserSignIn({
-              email: email,
-              password: password
-            }),
-            customError !== null
-              ? (alert('Invalid email or password'), dispatch(UpdateCustomError(null)))
-              : (alert('Suscfully SignIn'), dispatch(HandleModel(false)))
+          let existingUser = users.some(
+            (user) => user.values.email === email && user.values.password === password
           )
+          if (existingUser) {
+            dispatch(
+              UserSignIn({
+                email: email,
+                password: password
+              })
+            ),
+              alert('Suscfully SignIn'),
+              dispatch(HandleModel(false))
+          } else {
+            alert('Invalid email or password')
+          }
         }}>
         {(formik) => (
           <Form className="form p-3 mt-5">

@@ -1,4 +1,4 @@
-import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER, CUSTOM_ERROR } from '../constant'
+import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
 
 export const UserSignUp = (values) => {
   return {
@@ -24,13 +24,6 @@ export const UserSignOut = () => {
 export const HandleModel = (values) => {
   return {
     type: MODEL,
-    payload: values
-  }
-}
-
-export const UpdateCustomError = (values) => {
-  return {
-    type: CUSTOM_ERROR,
     payload: values
   }
 }

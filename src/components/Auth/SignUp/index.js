@@ -3,7 +3,7 @@ import * as Yup from 'yup'
 import { Formik, Form, ErrorMessage } from 'formik'
 import TextField from './TextField.js'
 import { useDispatch, useSelector } from 'react-redux'
-import { HandleModel, UpdateCustomError, UserSignUp } from '../../../redux/actions'
+import { UserSignUp, HandleModel } from '../../../redux/actions'
 
 export default function SignUp() {
   const validate = Yup.object({
@@ -19,7 +19,7 @@ export default function SignUp() {
 
   const dispatch = useDispatch()
 
-  const customError = useSelector((state) => state.userManagementReducer.customError)
+  const users = useSelector((state) => state.userManagementReducer.users)
 
   return (
     <>
@@ -28,16 +28,21 @@ export default function SignUp() {
         validationSchema={validate}
         onSubmit={(values) => {
           const { fullName, email, password } = values
-          dispatch(
-            UserSignUp({
-              name: fullName,
-              email: email,
-              password: password
-            }),
-            customError !== null
-              ? (alert('User is already exists'), dispatch(UpdateCustomError(null)))
-              : (alert('Suscfully sign in please go for sign up'), dispatch(HandleModel(false)))
-          )
+          let existingUser = users.some((user) => user.values.email === email)
+
+          if (existingUser) {
+            alert('User is already exists')
+          } else {
+            dispatch(
+              UserSignUp({
+                name: fullName,
+                email: email,
+                password: password
+              }),
+              alert('Suscfully sign in please go for sign up'),
+              dispatch(HandleModel(false))
+            )
+          }
         }}>
         {(formik) => (
           <Form className="form p-3">
