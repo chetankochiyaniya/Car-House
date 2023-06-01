@@ -15,6 +15,7 @@ import AuthModel from '../../Auth/AuthModel'
 import { useDispatch, useSelector } from 'react-redux'
 import { HandleModel, UserSignOut } from '../../../redux/actions'
 import { Avatar, Divider, Tooltip } from '@mui/material'
+import { toast } from 'react-toastify'
 
 function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null)
@@ -46,6 +47,19 @@ function Navbar() {
 
   const handleCloseUserMenu = () => {
     setAnchorElUser(null)
+  }
+  const handleSignout = () => {
+    dispatch(UserSignOut()),
+      toast.success('successfully signout !', {
+        position: 'top-center',
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: 'light'
+      })
   }
 
   return (
@@ -219,7 +233,7 @@ function Navbar() {
                         backgroundColor: 'var(--red-color)',
                         '&:hover': { backgroundColor: 'var(--btn-hover)' }
                       }}
-                      onClick={() => dispatch(UserSignOut())}>
+                      onClick={handleSignout}>
                       SignOut
                     </Button>
                   </MenuItem>

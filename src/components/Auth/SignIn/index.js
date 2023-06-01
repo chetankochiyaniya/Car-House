@@ -4,6 +4,7 @@ import { Formik, Form } from 'formik'
 import TextField from './TextField.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserSignIn, HandleModel } from '../../../redux/actions/index.js'
+import { toast } from 'react-toastify'
 
 export default function SignIn() {
   const validate = Yup.object({
@@ -15,6 +16,29 @@ export default function SignIn() {
 
   const dispatch = useDispatch()
   const users = useSelector((state) => state.userManagementReducer.users)
+
+  const showSuccessToast = () =>
+    toast.success('successfull loggedIn', {
+      position: 'top-center',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    })
+  const showErrorToast = () =>
+    toast.error('invalid email or password !', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    })
 
   return (
     <>
@@ -33,10 +57,10 @@ export default function SignIn() {
                 password: password
               })
             ),
-              alert('Suscfully SignIn'),
+              showSuccessToast(),
               dispatch(HandleModel(false))
           } else {
-            alert('Invalid email or password')
+            showErrorToast()
           }
         }}>
         {(formik) => (

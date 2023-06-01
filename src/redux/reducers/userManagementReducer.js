@@ -13,7 +13,8 @@ const userManagementReducer = (state = initialState, action) => {
     case ADD_USER:
       return {
         ...state,
-        users: [...state.users, payload]
+        users: [...state.users, payload],
+        loggedInUser: [payload]
       }
     case SIGNIN_USER:
       data = state.users.filter((user) => payload.values.email == user.values.email)

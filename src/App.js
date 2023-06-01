@@ -7,11 +7,24 @@ import CardDetails from './components/Cars/CarDetails'
 import About from './components/About'
 import Contact from './components/Contact'
 import Team from './components/Team'
+import { ToastContainer } from 'react-toastify'
 
 function App() {
   return (
     <>
       <Navbar />
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<AllCars />} />

@@ -4,6 +4,7 @@ import { Formik, Form, ErrorMessage } from 'formik'
 import TextField from './TextField.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserSignUp, HandleModel } from '../../../redux/actions'
+import { toast } from 'react-toastify'
 
 export default function SignUp() {
   const validate = Yup.object({
@@ -20,6 +21,28 @@ export default function SignUp() {
   const dispatch = useDispatch()
 
   const users = useSelector((state) => state.userManagementReducer.users)
+  const showSuccessToast = () =>
+    toast.success('successfully Signed Up', {
+      position: 'top-center',
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    })
+  const showErrorToast = () =>
+    toast.error('user is already exists !', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    })
 
   return (
     <>
@@ -31,7 +54,7 @@ export default function SignUp() {
           let existingUser = users.some((user) => user.values.email === email)
 
           if (existingUser) {
-            alert('User is already exists')
+            showErrorToast()
           } else {
             dispatch(
               UserSignUp({
@@ -39,7 +62,7 @@ export default function SignUp() {
                 email: email,
                 password: password
               }),
-              alert('Suscfully sign in please go for sign up'),
+              showSuccessToast(),
               dispatch(HandleModel(false))
             )
           }
