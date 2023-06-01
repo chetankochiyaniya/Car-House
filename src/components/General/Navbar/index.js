@@ -21,7 +21,7 @@ function Navbar() {
   const [anchorElNav, setAnchorElNav] = useState(null)
   const [anchorElUser, setAnchorElUser] = React.useState(null)
   const navigate = useNavigate()
-  const { modelOpen, loggedInUser } = useSelector((state) => state.userManagementReducer)
+  const { modelOpen, loggedInUser, adminRole } = useSelector((state) => state.userManagementReducer)
   const dispatch = useDispatch()
 
   const handleOpenNavMenu = (event) => {
@@ -116,6 +116,15 @@ function Navbar() {
                 sx={{
                   display: { xs: 'block', md: 'none' }
                 }}>
+                {adminRole ? (
+                  <MenuItem onClick={() => handleCloseNavMenu('/dashboard')}>
+                    <Typography textAlign="center" sx={{ color: 'var(--red-color)' }}>
+                      Dashboard
+                    </Typography>
+                  </MenuItem>
+                ) : (
+                  ''
+                )}
                 <MenuItem onClick={() => handleCloseNavMenu('/')}>
                   <Typography textAlign="center">Home</Typography>
                 </MenuItem>
@@ -186,6 +195,21 @@ function Navbar() {
                 sx={{ my: 2, color: 'white', display: 'block' }}>
                 Team
               </Button>
+              {adminRole ? (
+                <Button
+                  onClick={() => navigate('/dashboard')}
+                  sx={{
+                    my: 2,
+                    color: 'var(--red-color)',
+                    display: 'block',
+                    fontWeight: 700,
+                    marginRight: 2
+                  }}>
+                  Dashboard
+                </Button>
+              ) : (
+                ''
+              )}
             </Box>
             {loggedInUser == null ? (
               <Button sx={{ my: 2, color: 'white', display: 'block' }} onClick={handleOpenSignUp}>
@@ -195,7 +219,10 @@ function Navbar() {
               <Box sx={{ flexGrow: 0 }}>
                 <Tooltip title="Open settings">
                   <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ms: 2 }}>
-                    <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                    <Avatar
+                      alt={loggedInUser[0].values.name.toUpperCase()}
+                      src="/static/images/avatar/2.jpg"
+                    />
                   </IconButton>
                 </Tooltip>
                 <Menu

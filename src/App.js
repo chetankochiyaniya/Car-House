@@ -1,5 +1,5 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
+import React, { lazy } from 'react'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Navbar from './components/General/Navbar'
 import Home from './components/Home'
 import AllCars from './components/Cars/AllCars'
@@ -8,6 +8,9 @@ import About from './components/About'
 import Contact from './components/Contact'
 import Team from './components/Team'
 import { ToastContainer } from 'react-toastify'
+import AdminRoute from './routes/AdminRoute'
+
+const AdminDashbord = lazy(() => import('./components/Dashboard'))
 
 function App() {
   return (
@@ -32,6 +35,8 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<Team />} />
+        <Route path="*" element={<Navigate to="/" />} />
+        <Route path="/dashboard" element={<AdminRoute component={AdminDashbord} />} />
       </Routes>
     </>
   )

@@ -1,3 +1,8 @@
+/* 
+---------------------------------------------
+global styles
+--------------------------------------------- 
+*/
 :root {
   --red-color: #ed563b;
   --btn-hover: #ec3e1fbb;
@@ -16,11 +21,11 @@
   color: var(--red-color);
 }
 
-/* 
----------------------------------------------
-global styles
---------------------------------------------- 
-*/
+::-webkit-scrollbar {
+  width: 0; /* Remove scrollbar space */
+  background: transparent; /* Optional: just make scrollbar invisible */
+}
+
 html,
 body {
   background: #fff;
@@ -35,11 +40,4 @@ body {
 ::-moz-selection {
   background: var(--red-color);
   color: var(--white-color);
-}
-
-@media (max-width: 991px) {
-  html,
-  body {
-    overflow-x: hidden;
-  }
 }

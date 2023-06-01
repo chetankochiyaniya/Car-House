@@ -1,9 +1,13 @@
 import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
 
 const initialState = {
-  users: [],
+  users: [{ values: { name: 'admin', email: 'admin@gmail.com', password: 'admin' } }],
   modelOpen: false,
-  loggedInUser: null
+  loggedInUser: null,
+  adminName: 'admin',
+  adminUser: 'admin@gmail.com',
+  adminPassword: 'admin',
+  adminRole: false
 }
 
 const userManagementReducer = (state = initialState, action) => {
@@ -18,15 +22,28 @@ const userManagementReducer = (state = initialState, action) => {
       }
     case SIGNIN_USER:
       data = state.users.filter((user) => payload.values.email == user.values.email)
-      return {
-        ...state,
-        loggedInUser: data
+      if (
+        payload.values.email === state.adminUser &&
+        payload.values.password === state.adminPassword
+      ) {
+        return {
+          ...state,
+          loggedInUser: data,
+          adminRole: true
+        }
+      } else {
+        return {
+          ...state,
+          loggedInUser: data,
+          adminRole: false
+        }
       }
 
     case SIGNOUT:
       return {
         ...state,
-        loggedInUser: null
+        loggedInUser: null,
+        adminRole: false
       }
     case MODEL:
       return {
