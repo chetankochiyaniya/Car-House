@@ -1,14 +1,10 @@
-/* 
----------------------------------------------
-Featured Cars
---------------------------------------------- 
-*/
-
 #cards {
-  padding-bottom: 90px;
+  padding-bottom: 15px !important;
 }
 
 #cards .card-item {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border-radius: 5px;
   box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
@@ -37,6 +33,12 @@ Featured Cars
   color: #232d39;
   letter-spacing: 0.5px;
   margin-bottom: 18px;
+}
+
+#cards .card-item .description {
+  height: 100px; /* Adjust the height as desired */
+  overflow: auto;
+  margin-bottom: 5px;
 }
 
 #cards .card-item p {

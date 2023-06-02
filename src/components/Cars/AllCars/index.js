@@ -175,7 +175,9 @@ const AllCars = () => {
                         &nbsp; <sup>₹</sup> {car.price.discountedPrice}
                       </Typography>
                       <Typography variant="h4">{car.carName}</Typography>
-                      <Typography variant="body1">{car.description}</Typography>
+                      <Typography variant="body1" className="description">
+                        {car.description}
+                      </Typography>
                       <Typography variant="body1">
                         <i className="fa fa-dashboard"></i> {car.tabOne[8].value} &nbsp;&nbsp;&nbsp;
                         <i className="fa fa-cube"></i>
