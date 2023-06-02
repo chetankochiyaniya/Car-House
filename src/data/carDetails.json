@@ -1,0 +1,1257 @@
+[
+  {
+    "carName": "Bugatti Chiron",
+    "price": {
+      "originalPrice": "1200",
+      "discountedPrice": "1000"
+    },
+    "description": "The Bugatti Chiron is a masterpiece of engineering and design.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://c4.wallpaperflare.com/wallpaper/441/937/183/bugatti-chiron-4k-image-of-best-wallpaper-preview.jpg"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Bugatti"
+      },
+      {
+        "label": "Model",
+        "value": "Chiron"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "8.0L Quad-Turbocharged W16"
+      },
+      {
+        "label": "Max Power",
+        "value": "1500 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed Dual-Clutch"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 2.4s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "420 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "100 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Blue, Black, Silver, Red"
+      }
+    ],
+    "tabTwo": [
+      "Carbon Fiber Body",
+      "LED Headlights",
+      "Active Rear Wing",
+      "20-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4544 mm"
+      },
+      {
+        "label": "Width",
+        "value": "2038 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1212 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2711 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1995 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "44 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Chetan Kochiyaniy" },
+      { "label": "Phone", "value": "+91 635-307-4971" },
+      { "label": "Mobile phone", "value": "+91 123-456-7890" },
+      { "label": "Email", "value": "chetan@carhouse.com" }
+    ]
+  },
+  {
+    "carName": "Ferrari LaFerrari",
+    "price": {
+      "originalPrice": "3000",
+      "discountedPrice": "2800"
+    },
+    "description": "The Ferrari LaFerrari is a high-performance hybrid sports car.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://www.digitaltrends.com/wp-content/uploads/2016/02/1.4-million-Ferrari-LaFerrari_0011.jpg?fit=720%2C720&p=1"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Ferrari"
+      },
+      {
+        "label": "Model",
+        "value": "LaFerrari"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "6.3L V12 Hybrid"
+      },
+      {
+        "label": "Max Power",
+        "value": "949 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed Dual-Clutch"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 2.9s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "349 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "90 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Red, Yellow, Black, White"
+      }
+    ],
+    "tabTwo": [
+      "Carbon Fiber Body",
+      "LED Headlights",
+      "Active Rear Wing",
+      "19-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4702 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1992 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1116 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2650 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1255 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "28 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "John Doe" },
+      { "label": "Phone", "value": "+1 123-456-7890" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "john@example.com" }
+    ]
+  },
+  {
+    "carName": "Lamborghini Aventador",
+    "price": {
+      "originalPrice": "2800",
+      "discountedPrice": "2600"
+    },
+    "description": "The Lamborghini Aventador is a powerful and aggressive supercar.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://imgnew.outlookindia.com/public/uploads/articles/2019/1/22/car_1_20190122.jpg"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Lamborghini"
+      },
+      {
+        "label": "Model",
+        "value": "Aventador"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "6.5L V12"
+      },
+      {
+        "label": "Max Power",
+        "value": "770 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed ISR"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 2.9s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "350 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "90 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Yellow, Black, White, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Carbon Fiber Body",
+      "LED Headlights",
+      "Active Rear Wing",
+      "20-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4841 mm"
+      },
+      {
+        "label": "Width",
+        "value": "2030 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1136 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2700 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1575 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "100 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Jane Smith" },
+      { "label": "Phone", "value": "+1 555-123-4567" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "jane@example.com" }
+    ]
+  },
+  {
+    "carName": "Porsche 911",
+    "price": {
+      "originalPrice": "1500",
+      "discountedPrice": "1400"
+    },
+    "description": "The Porsche 911 is an iconic sports car known for its performance and design.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://turbocharged.in/admin/dbimages/2022-04-28-09-38-18_626a608a792c7_Porsche_911_Sports_Classic_interior_front_three.jpg"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Porsche"
+      },
+      {
+        "label": "Model",
+        "value": "911"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "3.0L Twin-Turbocharged Flat-6"
+      },
+      {
+        "label": "Max Power",
+        "value": "450 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "8-speed Dual-Clutch"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 3.5s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "300 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "64 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Red, Black, White, Silver"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "Rear Spoiler",
+      "19-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Anti-lock Braking System",
+      "Airbags"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4499 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1852 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1300 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2450 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1450 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "132 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "John Smith" },
+      { "label": "Phone", "value": "+1 555-123-4567" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "john@example.com" }
+    ]
+  },
+  {
+    "carName": "McLaren P1",
+    "price": {
+      "originalPrice": "2700",
+      "discountedPrice": "2500"
+    },
+    "description": "The McLaren P1 is a hybrid hypercar that combines electrifying performance with stunning design.",
+    "transmissionType": "Automatic",
+    "images": ["https://i.insider.com/5448245c69bedd3b0b4fb06c?width=700"],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "McLaren"
+      },
+      {
+        "label": "Model",
+        "value": "P1"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "3.8L Twin-Turbocharged V8 Hybrid"
+      },
+      {
+        "label": "Max Power",
+        "value": "903 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed Dual-Clutch"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 2.8s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "350 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "72 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Orange, Silver, Blue, Black"
+      }
+    ],
+    "tabTwo": [
+      "Carbon Fiber Body",
+      "LED Headlights",
+      "Active Rear Wing",
+      "20-inch Alloy Wheels",
+      "Leather and Alcantara Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4588 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1946 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1140 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2670 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1395 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "100 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Emily Johnson" },
+      { "label": "Phone", "value": "+1 555-987-6543" },
+      { "label": "Mobile phone", "value": "+1 123-456-7890" },
+      { "label": "Email", "value": "emily@example.com" }
+    ]
+  },
+  {
+    "carName": "Aston Martin DB11",
+    "price": {
+      "originalPrice": "2000",
+      "discountedPrice": "1800"
+    },
+    "description": "The Aston Martin DB11 is a luxurious grand tourer that combines elegance with high-performance capabilities.",
+    "transmissionType": "Automatic",
+    "images": ["https://i.pinimg.com/originals/e4/37/04/e43704a95a95c5b4f5084a79b4ef9a10.jpg"],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Aston Martin"
+      },
+      {
+        "label": "Model",
+        "value": "DB11"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "5.2L Twin-Turbocharged V12"
+      },
+      {
+        "label": "Max Power",
+        "value": "630 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "8-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 3.7s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "322 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "78 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Silver, Black, Blue, Red"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "20-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4750 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1950 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1279 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2805 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1870 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "270 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Michael Davis" },
+      { "label": "Phone", "value": "+1 555-234-5678" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "michael@example.com" }
+    ]
+  },
+  {
+    "carName": "Rolls-Royce Phantom",
+    "price": {
+      "originalPrice": "3500",
+      "discountedPrice": "3200"
+    },
+    "description": "The Rolls-Royce Phantom is the epitome of luxury and refinement, offering a serene driving experience.",
+    "transmissionType": "Automatic",
+    "images": ["https://www.financialexpress.com/wp-content/uploads/2022/04/RR-4.jpg"],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Luxury Sedan"
+      },
+      {
+        "label": "Make",
+        "value": "Rolls-Royce"
+      },
+      {
+        "label": "Model",
+        "value": "Phantom"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "6.75L Twin-Turbocharged V12"
+      },
+      {
+        "label": "Max Power",
+        "value": "563 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "8-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 5.3s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "250 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "82 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Black, White, Silver, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "Chrome Grille",
+      "20-inch Alloy Wheels",
+      "Leather and Wood Interior",
+      "Four-zone Climate Control",
+      "Navigation System",
+      "Premium Sound System",
+      "Front and Rear Parking Sensors",
+      "360-degree Camera System",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "6092 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1990 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1656 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "3772 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "2670 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "548 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Sophia Anderson" },
+      { "label": "Phone", "value": "+1 555-345-6789" },
+      { "label": "Mobile phone", "value": "+1 123-456-7890" },
+      { "label": "Email", "value": "sophia@example.com" }
+    ]
+  },
+  {
+    "carName": "Mercedes-Benz S-Class",
+    "price": {
+      "originalPrice": "1800",
+      "discountedPrice": "1650"
+    },
+    "description": "The Mercedes-Benz S-Class is a flagship luxury sedan that sets new standards in comfort and technology.",
+    "transmissionType": "Automatic",
+    "images": ["https://s.isanook.com/au/0/ui/16/80787/s-guard_01.jpg"],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Luxury Sedan"
+      },
+      {
+        "label": "Make",
+        "value": "Mercedes-Benz"
+      },
+      {
+        "label": "Model",
+        "value": "S-Class"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "3.0L Turbocharged Inline-6 / 4.0L Twin-Turbocharged V8"
+      },
+      {
+        "label": "Max Power",
+        "value": "429-603 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "9-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 4.4s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "250 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "80 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Silver, Black, White, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "Panoramic Sunroof",
+      "18-inch Alloy Wheels",
+      "Leather Interior",
+      "Four-zone Climate Control",
+      "MBUX Infotainment System",
+      "Burmester Sound System",
+      "Front and Rear Parking Sensors",
+      "360-degree Camera System",
+      "Adaptive Cruise Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "5255 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1954 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1496 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "3216 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1950-2300 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "510 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Daniel Thompson" },
+      { "label": "Phone", "value": "+1 555-876-5432" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "daniel@example.com" }
+    ]
+  },
+  {
+    "carName": "BMW M5",
+    "price": {
+      "originalPrice": "1600",
+      "discountedPrice": "1450"
+    },
+    "description": "The BMW M5 is a high-performance luxury sedan that combines power, precision, and elegance.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ6EbgwH9CwuqhRM7ofIb9T9AHlpBcmDZj1SJaTXUfKPvT1J1xvEKPXTLxSJ1mJ6_nxRSY&usqp=CAU"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Luxury Sedan"
+      },
+      {
+        "label": "Make",
+        "value": "BMW"
+      },
+      {
+        "label": "Model",
+        "value": "M5"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "4.4L Twin-Turbocharged V8"
+      },
+      {
+        "label": "Max Power",
+        "value": "600 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "8-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 3.4s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "305 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "68 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Black, White, Blue, Silver"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "19-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Harman Kardon Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Carbon Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4966 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1903 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1473 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2984 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1855 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "530 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Emily Wilson" },
+      { "label": "Phone", "value": "+1 555-987-6543" },
+      { "label": "Mobile phone", "value": "+1 123-456-7890" },
+      { "label": "Email", "value": "emily@example.com" }
+    ]
+  },
+  {
+    "carName": "Audi R8",
+    "price": {
+      "originalPrice": "1900",
+      "discountedPrice": "1750"
+    },
+    "description": "The Audi R8 is a high-performance sports car that combines exhilarating performance with cutting-edge technology.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://retaildesignblog.net/wp-content/uploads/2014/11/AUDI-R8-limited-edition-debuts-at-Los-Angeles-auto-show.jpg"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Audi"
+      },
+      {
+        "label": "Model",
+        "value": "R8"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "5.2L V10"
+      },
+      {
+        "label": "Max Power",
+        "value": "562 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed Dual-Clutch"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 3.4s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "320 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "73 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Red, White, Black, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum and Carbon Fiber Body",
+      "LED Headlights",
+      "19-inch Alloy Wheels",
+      "Leather and Alcantara Interior",
+      "Dual-zone Climate Control",
+      "Virtual Cockpit",
+      "Bang & Olufsen Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Ceramic Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4426 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1940 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1240 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2650 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1615 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "112 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Oliver Smith" },
+      { "label": "Phone", "value": "+1 555-123-4567" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "oliver@example.com" }
+    ]
+  },
+  {
+    "carName": "Jaguar F-Type",
+    "price": {
+      "originalPrice": "1500",
+      "discountedPrice": "1350"
+    },
+    "description": "The Jaguar F-Type is a stunning sports car that delivers a thrilling driving experience with its powerful performance and elegant design.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiRoS2NeiP-gqcPuNBi32Pfo3a7-25LAhs2A&usqp=CAU"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Sports Car"
+      },
+      {
+        "label": "Make",
+        "value": "Jaguar"
+      },
+      {
+        "label": "Model",
+        "value": "F-Type"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "3.0L Supercharged V6 / 5.0L Supercharged V8"
+      },
+      {
+        "label": "Max Power",
+        "value": "296-575 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "8-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-100 km/h in 3.5s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "300 km/h"
+      },
+      {
+        "label": "Fuel Capacity",
+        "value": "70 liters"
+      },
+      {
+        "label": "Color Options",
+        "value": "Red, White, Black, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "20-inch Alloy Wheels",
+      "Leather Interior",
+      "Dual-zone Climate Control",
+      "Navigation System",
+      "Meridian Sound System",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Performance Brakes",
+      "Electronic Stability Control",
+      "Airbags",
+      "Anti-lock Braking System"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4482 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1923 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1311 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2622 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1585-1715 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "310 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Sophia Anderson" },
+      { "label": "Phone", "value": "+1 555-234-5678" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "sophia@example.com" }
+    ]
+  },
+  {
+    "carName": "Tesla Model S",
+    "price": {
+      "originalPrice": "1800",
+      "discountedPrice": "1650"
+    },
+    "description": "The Tesla Model S is an all-electric luxury sedan that sets new standards for performance, range, and technology.",
+    "transmissionType": "Automatic",
+    "images": [
+      "https://carsales.pxcrush.net/car/spec/S0004IQW.jpg?pxc_method=gravityfill&pxc_bgtype=self&pxc_size=720,480&watermark=189648565"
+    ],
+    "tabOne": [
+      {
+        "label": "Type",
+        "value": "Electric Sedan"
+      },
+      {
+        "label": "Make",
+        "value": "Tesla"
+      },
+      {
+        "label": "Model",
+        "value": "Model S"
+      },
+      {
+        "label": "Year",
+        "value": "2023"
+      },
+      {
+        "label": "Engine",
+        "value": "5.0L Supercharged V8"
+      },
+      {
+        "label": "Max Power",
+        "value": "265-350 hp"
+      },
+      {
+        "label": "Transmission",
+        "value": "7-speed Automatic"
+      },
+      {
+        "label": "Acceleration",
+        "value": "0-60 mph in 2.4s"
+      },
+      {
+        "label": "Top Speed",
+        "value": "300 km/h"
+      },
+      {
+        "label": "Charge Capacity",
+        "value": "400 V"
+      },
+      {
+        "label": "Color Options",
+        "value": "Red, White, Black, Blue"
+      }
+    ],
+    "tabTwo": [
+      "Aluminum Body",
+      "LED Headlights",
+      "19-inch Alloy Wheels",
+      "Premium Interior",
+      "Dual-zone Climate Control",
+      "17-inch Touchscreen Display",
+      "Premium Audio System",
+      "Autopilot",
+      "Front and Rear Parking Sensors",
+      "Rearview Camera",
+      "Regenerative Braking",
+      "Airbags",
+      "Electronic Stability Control"
+    ],
+    "tabThree": [
+      {
+        "label": "Length",
+        "value": "4970 mm"
+      },
+      {
+        "label": "Width",
+        "value": "1964 mm"
+      },
+      {
+        "label": "Height",
+        "value": "1445 mm"
+      },
+      {
+        "label": "Wheelbase",
+        "value": "2960 mm"
+      },
+      {
+        "label": "Curb Weight",
+        "value": "1999-2205 kg"
+      },
+      {
+        "label": "Trunk Capacity",
+        "value": "804 liters"
+      }
+    ],
+    "tabFour": [
+      { "label": "Name", "value": "Michael Johnson" },
+      { "label": "Phone", "value": "+1 555-789-1234" },
+      { "label": "Mobile phone", "value": "+1 987-654-3210" },
+      { "label": "Email", "value": "michael@example.com" }
+    ]
+  }
+]

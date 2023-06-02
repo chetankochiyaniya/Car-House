@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import {
   Box,
   Container,
@@ -15,9 +15,26 @@ import Banner from '../Banner'
 import './index.css'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../General/Footer'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCarDetails } from '../../../redux/actions'
 
 const AllCars = () => {
   const navigate = useNavigate()
+  const dispatch = useDispatch()
+  const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+
+  useEffect(() => {
+    dispatch(getCarDetails())
+  }, [dispatch])
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
+
   return (
     <>
       <Banner />
@@ -142,150 +159,39 @@ const AllCars = () => {
       <Box id="allcars" sx={{ py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-1.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-1.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-3.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-4.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-5.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
-            <Grid item xs={12} md={4}>
-              <Box className="card-item">
-                <Box className="image-thumb">
-                  <img src="/assets/product-6.jpg" alt="" />
-                </Box>
-                <Box className="down-content">
-                  <Typography component="span">
-                    <del>
-                      <sup>₹</sup>11999{' '}
-                    </del>{' '}
-                    &nbsp; <sup>₹</sup>11779
-                  </Typography>
-                  <Typography variant="h4">Lorem ipsum dolor sit amet, consectetur</Typography>
-                  <Typography variant="body1">
-                    <i className="fa fa-dashboard"></i> 130 000km &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cube"></i> 1800 cc &nbsp;&nbsp;&nbsp;
-                    <i className="fa fa-cog"></i> Manual &nbsp;&nbsp;&nbsp;
-                  </Typography>
-                  <Typography color="var(--link-color)" onClick={() => navigate('/car-details')}>
-                    + View Car
-                  </Typography>
-                </Box>
-              </Box>
-            </Grid>
+            {data.map((car, index) => {
+              return (
+                <Grid item xs={12} md={4} key={index}>
+                  <Box className="card-item">
+                    <Box className="image-thumb">
+                      <img src={car.images[0]} alt="" className="lg-image" />
+                    </Box>
+                    <Box className="down-content">
+                      <Typography component="span">
+                        <del>
+                          <sup>₹</sup>
+                          {car.price.originalPrice}{' '}
+                        </del>{' '}
+                        &nbsp; <sup>₹</sup> {car.price.discountedPrice}
+                      </Typography>
+                      <Typography variant="h4">{car.carName}</Typography>
+                      <Typography variant="body1">{car.description}</Typography>
+                      <Typography variant="body1">
+                        <i className="fa fa-dashboard"></i> {car.tabOne[8].value} &nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-cube"></i>
+                        {car.tabOne[5].value}c &nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-cog"></i> {car.transmissionType} &nbsp;&nbsp;&nbsp;
+                      </Typography>
+                      <Typography
+                        color="var(--link-color)"
+                        onClick={() => navigate('/car-details')}>
+                        + View Car
+                      </Typography>
+                    </Box>
+                  </Box>
+                </Grid>
+              )
+            })}
           </Grid>
         </Container>
       </Box>
