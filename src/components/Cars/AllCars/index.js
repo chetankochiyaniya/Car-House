@@ -31,6 +31,9 @@ const AllCars = () => {
   const [fuel, setFuel] = useState('all')
   const [year, setYear] = useState('all')
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 3
+
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
   const [filteredData, setFilteredData] = useState(data)
 
@@ -92,11 +95,6 @@ const AllCars = () => {
       }
       return true
     })
-    console.log(
-      '======================================================================',
-      response.length,
-      response == []
-    )
     setFilteredData(response)
   }
 
@@ -108,6 +106,14 @@ const AllCars = () => {
   const isMileageInRange = (itemMileage, selectedMileageRange) => {
     const [minMileage, maxMileage] = selectedMileageRange.split('-')
     return itemMileage >= parseFloat(minMileage) && itemMileage <= parseFloat(maxMileage)
+  }
+
+  const indexOfLastItem = currentPage * itemsPerPage
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
+
+  const handlePageChange = (event, page) => {
+    setCurrentPage(page)
   }
 
   return (
@@ -234,7 +240,7 @@ const AllCars = () => {
       <Box id="allcars" sx={{ py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            {filteredData.length === 0 ? (
+            {currentItems.length === 0 ? (
               <Grid item xs={12}>
                 <Box>
                   <Typography
@@ -245,7 +251,7 @@ const AllCars = () => {
                 </Box>
               </Grid>
             ) : (
-              filteredData?.map((car, index) => {
+              currentItems?.map((car, index) => {
                 if (!car?.price) {
                   return null
                 }
@@ -288,7 +294,15 @@ const AllCars = () => {
         </Container>
       </Box>
       <Container sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 6 }}>
-        {filteredData.length !== 0 ? <Pagination count={10} color="error" /> : ''}
+        {filteredData.length !== 0 && filteredData.length > itemsPerPage ? (
+          <Pagination
+            count={Math.ceil(filteredData.length / itemsPerPage)}
+            color="error"
+            onChange={handlePageChange}
+          />
+        ) : (
+          ''
+        )}
       </Container>
       <Footer />
     </>
