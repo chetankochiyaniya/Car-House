@@ -96,6 +96,7 @@ const AllCars = () => {
       return true
     })
     setFilteredData(response)
+    setCurrentPage(1)
   }
 
   const isPriceInRange = (itemPrice, selectedPriceRange) => {
@@ -298,6 +299,7 @@ const AllCars = () => {
           <Pagination
             count={Math.ceil(filteredData.length / itemsPerPage)}
             color="error"
+            page={currentPage}
             onChange={handlePageChange}
           />
         ) : (
