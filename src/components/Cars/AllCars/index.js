@@ -179,10 +179,10 @@ const AllCars = () => {
                         {car.description}
                       </Typography>
                       <Typography variant="body1">
-                        <i className="fa fa-dashboard"></i> {car.tabOne[8].value} &nbsp;&nbsp;&nbsp;
-                        <i className="fa fa-cube"></i>
-                        {car.tabOne[5].value}c &nbsp;&nbsp;&nbsp;
-                        <i className="fa fa-cog"></i> {car.transmissionType} &nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-dashboard"></i> {car.tabOne[7].value} Km/L
+                        &nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
+                        <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                       </Typography>
                       <Typography
                         color="var(--link-color)"

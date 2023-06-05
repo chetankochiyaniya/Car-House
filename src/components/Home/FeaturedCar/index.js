@@ -21,7 +21,7 @@ function FeaturedCar() {
     return <div>Error: {error}</div>
   }
 
-  const cars = data.slice(0, 3)
+  const cars = data?.slice(0, 3)
   return (
     <>
       <Box id="cards" sx={{ py: 4 }}>
@@ -64,9 +64,10 @@ function FeaturedCar() {
                       {car.description}
                     </Typography>
                     <Typography variant="body1">
-                      <i className="fa fa-dashboard"></i> {car.tabOne[8].value} &nbsp;&nbsp;&nbsp;
-                      <i className="fa fa-cube"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
-                      <i className="fa fa-cog"></i> {car.transmissionType} &nbsp;&nbsp;&nbsp;
+                      <i className="fa fa-dashboard"></i> {car.tabOne[7].value} Km/L
+                      &nbsp;&nbsp;&nbsp;
+                      <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
+                      <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                     </Typography>
                     <Link to="car-details">+ View Car</Link>
                   </Box>
