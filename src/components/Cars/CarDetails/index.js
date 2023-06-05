@@ -4,6 +4,7 @@ import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCarDetails } from '../../../redux/actions'
+import { useParams } from 'react-router-dom'
 
 const CarDetails = () => {
   const [activeTab, setActiveTab] = useState('tabs-1')
@@ -12,6 +13,7 @@ const CarDetails = () => {
     event.preventDefault()
     setActiveTab(tabId)
   }
+  let { id } = useParams()
 
   const dispatch = useDispatch()
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
@@ -28,6 +30,9 @@ const CarDetails = () => {
     return <div>Error: {error}</div>
   }
 
+  const cardata = data?.filter((item) => item.car_id === id)
+  console.log(cardata[0])
+
   return (
     <>
       {/* * Image Carousel Start */}
@@ -35,15 +40,11 @@ const CarDetails = () => {
         <Grid container justifyContent="center">
           <Grid item>
             <Carousel maxHe>
-              <div>
-                <img src="assets/car-1.jpg" alt="First slide" />
-              </div>
-              <div>
-                <img src="assets/car-1.jpg" alt="Second slide" />
-              </div>
-              <div>
-                <img src="assets/car-1.jpg" alt="Third slide" />
-              </div>
+              {cardata[0].images.map((item, index) => (
+                <div key={index}>
+                  <img src={item} alt="First slide" />
+                </div>
+              ))}
             </Carousel>
           </Grid>
         </Grid>
@@ -105,7 +106,7 @@ const CarDetails = () => {
                     Vehicle Specs
                   </Typography>
                   <Box className="row">
-                    {data[0].tabOne.map((item, index) => {
+                    {cardata[0].tabOne?.map((item, index) => {
                       return (
                         <Box className="col-sm-6" key={`specs${index}`}>
                           <Typography
@@ -123,7 +124,7 @@ const CarDetails = () => {
                   <Typography variant="h4" style={{ marginTop: 10 }}>
                     Vehicle Description
                   </Typography>
-                  {data[0].tabTwo.map((item, index) => (
+                  {cardata[0]?.tabTwo?.map((item, index) => (
                     <Typography style={{ marginBottom: 3 }} key={`dec${index}`}>
                       - {item}
                     </Typography>
@@ -134,7 +135,7 @@ const CarDetails = () => {
                     Vehicle Extras
                   </Typography>
                   <Box className="row">
-                    {data[0].tabThree.map((item, index) => {
+                    {cardata[0].tabThree?.map((item, index) => {
                       return (
                         <Box className="col-sm-6" key={`extra${index}`}>
                           <Typography
@@ -153,7 +154,7 @@ const CarDetails = () => {
                     Contact Details
                   </Typography>
                   <Box className="row">
-                    {data[0].tabFour.map((item, index) => {
+                    {cardata[0].tabFour?.map((item, index) => {
                       return (
                         <Box className="col-sm-6" key={`contact${index}`}>
                           <Typography
@@ -178,11 +179,11 @@ const CarDetails = () => {
           variant="h5"
           component="span"
           sx={{ color: 'var(--navbar-bg)', mb: 2, textDecoration: 'line-through' }}>
-          ₹{data[0].price.originalPrice}
+          ₹{cardata[0].price?.originalPrice}
         </Typography>
         <Typography variant="h5" color="var(--red-color)" component="span">
           {' '}
-          ₹{data[0].price.discountedPrice}
+          ₹{cardata[0].price?.discountedPrice}
         </Typography>
       </Typography>
       <Box sx={{ textAlign: 'center', mt: 3, mb: 5 }}>

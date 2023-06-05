@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Typography, Container, Grid, Box, Button } from '@mui/material'
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -22,6 +22,8 @@ function FeaturedCar() {
   }
 
   const cars = data?.slice(0, 3)
+
+  const navigate = useNavigate()
   return (
     <>
       <Box id="cards" sx={{ py: 4 }}>
@@ -45,10 +47,10 @@ function FeaturedCar() {
           </Grid>
           <Grid container spacing={4}>
             {cars.map((car, index) => (
-              <Grid item xs={12} md={4} key={`car-${index}`}>
+              <Grid item xs={12} md={4} key={index}>
                 <Box className="card-item">
                   <Box className="image-thumb">
-                    <img src={car.images[0]} alt="" />
+                    <img src={car.images[0]} alt="" className="lg-image" />
                   </Box>
                   <Box className="down-content">
                     <Typography component="span">
@@ -56,8 +58,7 @@ function FeaturedCar() {
                         <sup>₹</sup>
                         {car.price.originalPrice}{' '}
                       </del>{' '}
-                      &nbsp; <sup>₹</sup>
-                      {car.price.discountedPrice}
+                      &nbsp; <sup>₹</sup> {car.price.discountedPrice}
                     </Typography>
                     <Typography variant="h4">{car.carName}</Typography>
                     <Typography variant="body1" className="description">
@@ -69,7 +70,11 @@ function FeaturedCar() {
                       <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
                       <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                     </Typography>
-                    <Link to="car-details">+ View Car</Link>
+                    <Typography
+                      color="var(--link-color)"
+                      onClick={() => navigate(`/car-details/${car.car_id}`)}>
+                      + View Car
+                    </Typography>
                   </Box>
                 </Box>
               </Grid>

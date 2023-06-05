@@ -32,7 +32,7 @@ const AllCars = () => {
   const [year, setYear] = useState('all')
 
   const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 3
+  const itemsPerPage = 6
 
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
   const [filteredData, setFilteredData] = useState(data)
@@ -282,7 +282,7 @@ const AllCars = () => {
                         </Typography>
                         <Typography
                           color="var(--link-color)"
-                          onClick={() => navigate('/car-details')}>
+                          onClick={() => navigate(`/car-details/${car.car_id}`)}>
                           + View Car
                         </Typography>
                       </Box>
