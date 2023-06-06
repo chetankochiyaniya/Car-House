@@ -1,9 +1,11 @@
-import { combineReducers } from 'redux';
+import { combineReducers } from 'redux'
 
-import userManagementReducer from "./userManagementReducer";
+import userManagementReducer from './userManagementReducer'
+import fetchDataReducer from './fetchDataReducer'
 
 const rootReducers = combineReducers({
-  userManagementReducer
-});
+  userManagementReducer,
+  fetchDataReducer
+})
 
-export default rootReducers;
+export default rootReducers

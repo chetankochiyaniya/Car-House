@@ -1,4 +1,5 @@
 import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
+import carDetailsData from '../../data/carDetails.json'
 
 export const UserSignUp = (values) => {
   return {
@@ -15,6 +16,7 @@ export const UserSignIn = (values) => {
     payload: { values }
   }
 }
+
 export const UserSignOut = () => {
   return {
     type: SIGNOUT
@@ -25,5 +27,30 @@ export const HandleModel = (values) => {
   return {
     type: MODEL,
     payload: values
+  }
+}
+
+export const fetchDataRequest = () => ({
+  type: 'FETCH_DATA_REQUEST'
+})
+
+export const fetchDataSuccess = (data) => ({
+  type: 'FETCH_DATA_SUCCESS',
+  payload: data
+})
+
+export const fetchDataError = (error) => ({
+  type: 'FETCH_DATA_ERROR',
+  payload: error
+})
+
+export const getCarDetails = () => {
+  return async (dispatch) => {
+    dispatch(fetchDataRequest())
+    try {
+      dispatch(fetchDataSuccess(carDetailsData))
+    } catch (error) {
+      dispatch(fetchDataError(error.message))
+    }
   }
 }
