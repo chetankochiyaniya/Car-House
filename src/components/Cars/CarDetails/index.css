@@ -1,0 +1,24 @@
+.carousel .thumb img {
+  width: 100% !important;
+  height: 100% !important;
+}
+
+.carousel {
+  max-height: 400px;
+  max-width: 800px;
+}
+
+.carousel .slide img {
+  max-height: 400px;
+  max-width: 800px;
+}
+
+.carousel .thumb {
+  max-width: 80px;
+  max-height: 40px;
+  padding: 0;
+}
+.carousel .thumb.selected,
+.carousel .thumb:hover {
+  border: 3px solid var(--red-color);
+}

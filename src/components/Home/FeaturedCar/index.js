@@ -46,7 +46,7 @@ function FeaturedCar() {
             </Grid>
           </Grid>
           <Grid container spacing={4}>
-            {cars.map((car, index) => (
+            {cars?.map((car, index) => (
               <Grid item xs={12} md={4} key={index}>
                 <Box className="card-item">
                   <Box className="image-thumb">
