@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import {
   Box,
   Container,
@@ -16,7 +16,7 @@ import './index.css'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../General/Footer'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCarDetails } from '../../../redux/actions'
+import { updateLike } from '../../../redux/actions'
 
 const AllCars = () => {
   const navigate = useNavigate()
@@ -34,24 +34,13 @@ const AllCars = () => {
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 6
 
-  const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+  const { data } = useSelector((state) => state.fetchDataReducer)
+
   const [filteredData, setFilteredData] = useState(data)
-
-  useEffect(() => {
-    dispatch(getCarDetails())
-  }, [dispatch])
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>
-  }
 
   const handleSearch = () => {
     // Perform search with the selected filters
-    const response = data.filter((item) => {
+    const response = data?.filter((item) => {
       if (condition !== 'all' && item.tabOne[0].value !== condition) {
         return false
       }
@@ -111,7 +100,7 @@ const AllCars = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredData?.slice(indexOfFirstItem, indexOfLastItem)
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page)
@@ -241,7 +230,7 @@ const AllCars = () => {
       <Box id="allcars" sx={{ py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            {currentItems.length === 0 ? (
+            {currentItems?.length === 0 ? (
               <Grid item xs={12}>
                 <Box>
                   <Typography
@@ -280,11 +269,28 @@ const AllCars = () => {
                           <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
                           <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                         </Typography>
-                        <Typography
-                          color="var(--link-color)"
-                          onClick={() => navigate(`/car-details/${car.car_id}`)}>
-                          + View Car
-                        </Typography>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <Typography
+                            color="var(--link-color)"
+                            onClick={() => navigate(`/car-details/${car.car_id}`)}>
+                            + View Car
+                          </Typography>
+                          <Typography color="var(--link-color)">
+                            {data.find((item) => item.car_id === car.car_id)?.like ? (
+                              <i
+                                className="fa fa-heart fa-lg"
+                                aria-hidden="true"
+                                onClick={() => dispatch(updateLike(car.car_id))}
+                              />
+                            ) : (
+                              <i
+                                className="fa fa-heart-o fa-lg"
+                                aria-hidden="true"
+                                onClick={() => dispatch(updateLike(car.car_id))}
+                              />
+                            )}
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   </Grid>
@@ -295,7 +301,7 @@ const AllCars = () => {
         </Container>
       </Box>
       <Container sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 6 }}>
-        {filteredData.length !== 0 && filteredData.length > itemsPerPage ? (
+        {filteredData?.length !== 0 && filteredData?.length > itemsPerPage ? (
           <Pagination
             count={Math.ceil(filteredData.length / itemsPerPage)}
             color="error"

@@ -1,5 +1,4 @@
-import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
-import carDetailsData from '../../data/carDetails.json'
+import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER, UPDATE_LIKE } from '../constant'
 
 export const UserSignUp = (values) => {
   return {
@@ -30,27 +29,9 @@ export const HandleModel = (values) => {
   }
 }
 
-export const fetchDataRequest = () => ({
-  type: 'FETCH_DATA_REQUEST'
-})
-
-export const fetchDataSuccess = (data) => ({
-  type: 'FETCH_DATA_SUCCESS',
-  payload: data
-})
-
-export const fetchDataError = (error) => ({
-  type: 'FETCH_DATA_ERROR',
-  payload: error
-})
-
-export const getCarDetails = () => {
-  return async (dispatch) => {
-    dispatch(fetchDataRequest())
-    try {
-      dispatch(fetchDataSuccess(carDetailsData))
-    } catch (error) {
-      dispatch(fetchDataError(error.message))
-    }
+export const updateLike = (car_id) => {
+  return {
+    type: UPDATE_LIKE,
+    payload: car_id
   }
 }

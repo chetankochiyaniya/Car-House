@@ -1,29 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { Typography, Container, Grid, Box, Button } from '@mui/material'
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCarDetails } from '../../../redux/actions'
+import { updateLike } from '../../../redux/actions'
 
 function FeaturedCar() {
+  const { data } = useSelector((state) => state.fetchDataReducer)
   const dispatch = useDispatch()
-  const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
-
-  useEffect(() => {
-    dispatch(getCarDetails())
-  }, [dispatch])
-
-  if (isLoading) {
-    return <div>Loading...</div>
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>
-  }
-
   const cars = data?.slice(0, 3)
 
   const navigate = useNavigate()
+
   return (
     <>
       <Box id="cards" sx={{ py: 4 }}>
@@ -70,11 +58,28 @@ function FeaturedCar() {
                       <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
                       <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                     </Typography>
-                    <Typography
-                      color="var(--link-color)"
-                      onClick={() => navigate(`/car-details/${car.car_id}`)}>
-                      + View Car
-                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography
+                        color="var(--link-color)"
+                        onClick={() => navigate(`/car-details/${car.car_id}`)}>
+                        + View Car
+                      </Typography>
+                      <Typography color="var(--link-color)">
+                        {data.find((item) => item.car_id === car.car_id)?.like ? (
+                          <i
+                            className="fa fa-heart fa-lg"
+                            aria-hidden="true"
+                            onClick={() => dispatch(updateLike(car.car_id))}
+                          />
+                        ) : (
+                          <i
+                            className="fa fa-heart-o fa-lg"
+                            aria-hidden="true"
+                            onClick={() => dispatch(updateLike(car.car_id))}
+                          />
+                        )}
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
               </Grid>

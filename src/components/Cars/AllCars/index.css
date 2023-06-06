@@ -59,3 +59,10 @@
 .css-1jy569b-MuiFormLabel-root-MuiInputLabel-root {
   transform: translate(14px, -15px) scale(0.75) !important;
 }
+
+.fa-lg {
+  font-size: 1.6em;
+}
+.fa-heart {
+  color: var(--red-color);
+}

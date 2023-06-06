@@ -6,6 +6,7 @@
       "originalPrice": 1900,
       "discountedPrice": 1750
     },
+    "like": false,
     "description": "The Audi R8 is a high-performance sports car that combines exhilarating performance with cutting-edge technology.",
     "images": [
       "https://cdn.pixabay.com/photo/2019/12/26/20/50/audi-r8-4721217_1280.jpg",
@@ -101,6 +102,7 @@
       "originalPrice": 1500,
       "discountedPrice": 1350
     },
+    "like": false,
     "description": "The Jaguar F-Type is a stunning sports car that delivers a thrilling driving experience with its powerful performance and elegant design.",
     "images": [
       "https://cdn.wallpapersafari.com/26/75/KnWXZE.jpg",
@@ -195,6 +197,7 @@
       "originalPrice": 1800,
       "discountedPrice": 1650
     },
+    "like": false,
     "description": "The Tesla Model S is an all-electric luxury sedan that sets new standards for performance, range, and technology.",
     "images": [
       "https://wallpapercave.com/wp/wp4684443.jpg",
@@ -289,6 +292,7 @@
       "originalPrice": 1200,
       "discountedPrice": 1000
     },
+    "like": false,
     "description": "The Bugatti Chiron is a masterpiece of engineering and design.",
     "images": [
       "https://c4.wallpaperflare.com/wallpaper/441/937/183/bugatti-chiron-4k-image-of-best-wallpaper-preview.jpg",
@@ -385,6 +389,7 @@
       "originalPrice": 3000,
       "discountedPrice": 2800
     },
+    "like": false,
     "description": "The Ferrari LaFerrari is a high-performance hybrid sports car.",
     "images": [
       "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg/640px-LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg",
@@ -480,6 +485,7 @@
       "originalPrice": 2800,
       "discountedPrice": 2600
     },
+    "like": false,
     "description": "The Lamborghini Aventador is a powerful and aggressive supercar.",
     "images": [
       "https://pictures.dealer.com/l/lamborghinidallas/1694/8f4cdc2a434e958e4466b52f0781a612x.jpg?impolicy=downsize&w=568",
@@ -575,6 +581,7 @@
       "originalPrice": 1500,
       "discountedPrice": 1400
     },
+    "like": false,
     "description": "The Porsche 911 is an iconic sports car known for its performance and design.",
     "images": [
       "https://s1.1zoom.ru/big0/106/Porsche_911_Turbo_S_2020_992_Coupe_Metallic_Silver_582113_1365x1024.jpg",
@@ -668,6 +675,7 @@
       "originalPrice": 3500,
       "discountedPrice": 3200
     },
+    "like": false,
     "description": "The Rolls-Royce Phantom is the epitome of luxury and refinement, offering a serene driving experience.",
     "images": [
       "https://c4.wallpaperflare.com/wallpaper/270/428/1024/rolls-royce-ghost-dark-black-wallpaper-preview.jpg",
@@ -763,6 +771,7 @@
       "originalPrice": 1800,
       "discountedPrice": 1650
     },
+    "like": false,
     "description": "The Mercedes-Benz S-Class is a flagship luxury sedan that sets new standards in comfort and technology.",
     "images": [
       "https://images.hindustantimes.com/auto/img/2021/07/30/1600x900/2022-mercedes-s680-guard_1627633946225_1627633954029.jpg",
