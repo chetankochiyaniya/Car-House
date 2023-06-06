@@ -1,26 +1,43 @@
-import React, { useState } from 'react'
-import { Typography, Box, Container, Grid, Pagination } from '@mui/material'
-import { useDispatch, useSelector } from 'react-redux'
-import { updateLike } from '../../redux/actions'
+import React, { useEffect, useState } from 'react'
+import { Box, Container, Grid, Typography, Pagination } from '@mui/material'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { addToWishlist, getCarDetails, removeFromWishlist } from '../../redux/actions'
 
-function WishList() {
-  const [currentPage, setCurrentPage] = useState(1)
-  const itemsPerPage = 6
+const WishList = () => {
   const navigate = useNavigate()
-  const { data } = useSelector((state) => state.fetchDataReducer)
-
-  let filteredData
   const dispatch = useDispatch()
 
+  const [currentPage, setCurrentPage] = useState(1)
+  const itemsPerPage = 6
+
+  const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+  const { loggedInUser } = useSelector((state) => state.userManagementReducer)
+  const wishlist = useSelector((state) => state.wishlistReducer)
+
+  let filteredData
+
+  useEffect(() => {
+    dispatch(getCarDetails())
+  }, [dispatch])
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
   filteredData = data?.filter((item) => {
-    return item.like === true
+    return (
+      loggedInUser?.[0]?.values?.email !== null &&
+      wishlist?.[loggedInUser?.[0]?.values?.email]?.includes(item.car_id)
+    )
   })
-  console.log('filte', filteredData)
 
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredData?.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page)
@@ -40,18 +57,17 @@ function WishList() {
           Ut consectetur, metus sit amet aliquet placerat, enim est ultricies ligula
         </Typography>
       </Box>
+
       <Box id="allcars" sx={{ py: 4 }}>
         <Container maxWidth="lg">
           <Grid container spacing={4}>
-            {currentItems?.length === 0 ? (
+            {currentItems.length === 0 ? (
               <Grid item xs={12}>
                 <Box>
                   <Typography
                     variant="h5"
-                    color="var(--link-color)"
-                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-                    onClick={() => navigate('/cars')}>
-                    <u>Find your dream Car</u>
+                    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                    No Cars Found
                   </Typography>
                 </Box>
               </Grid>
@@ -91,11 +107,35 @@ function WishList() {
                             + View Car
                           </Typography>
                           <Typography color="var(--link-color)">
-                            <i
-                              className="fa fa-heart fa-lg"
-                              aria-hidden="true"
-                              onClick={() => dispatch(updateLike(car.car_id))}
-                            />
+                            {loggedInUser !== null ? (
+                              wishlist[loggedInUser[0].values.email]?.includes(car.car_id) ? (
+                                <i
+                                  className="fa fa-heart fa-lg"
+                                  aria-hidden="true"
+                                  onClick={() =>
+                                    dispatch(
+                                      removeFromWishlist(
+                                        loggedInUser[0].values.email,
+
+                                        car.car_id
+                                      )
+                                    )
+                                  }
+                                />
+                              ) : (
+                                <i
+                                  className="fa fa-heart-o fa-lg"
+                                  aria-hidden="true"
+                                  onClick={() =>
+                                    dispatch(
+                                      addToWishlist(loggedInUser[0].values.email, car.car_id)
+                                    )
+                                  }
+                                />
+                              )
+                            ) : (
+                              ''
+                            )}
                           </Typography>
                         </Box>
                       </Box>
@@ -108,7 +148,7 @@ function WishList() {
         </Container>
       </Box>
       <Container sx={{ display: 'flex', justifyContent: 'center', paddingBottom: 6 }}>
-        {filteredData?.length !== 0 && filteredData?.length > itemsPerPage ? (
+        {filteredData.length !== 0 && filteredData.length > itemsPerPage ? (
           <Pagination
             count={Math.ceil(filteredData.length / itemsPerPage)}
             color="error"

@@ -1,8 +1,9 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Box, Container, Typography, Grid, Link, Button } from '@mui/material'
 import { Carousel } from 'react-responsive-carousel'
 import 'react-responsive-carousel/lib/styles/carousel.min.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { getCarDetails } from '../../../redux/actions'
 import { useParams } from 'react-router-dom'
 import './index.css'
 
@@ -15,9 +16,23 @@ const CarDetails = () => {
   }
   let { id } = useParams()
 
-  const { data } = useSelector((state) => state.fetchDataReducer)
+  const dispatch = useDispatch()
+  const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+
+  useEffect(() => {
+    dispatch(getCarDetails())
+  }, [dispatch])
+
+  if (isLoading) {
+    return <div>Loading...</div>
+  }
+
+  if (error) {
+    return <div>Error: {error}</div>
+  }
 
   const cardata = data?.filter((item) => item.car_id === id)
+  console.log(cardata[0])
 
   return (
     <>

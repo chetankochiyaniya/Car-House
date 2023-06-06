@@ -1,4 +1,12 @@
-import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER, UPDATE_LIKE } from '../constant'
+import {
+  ADD_USER,
+  SIGNOUT,
+  MODEL,
+  SIGNIN_USER,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST
+} from '../constant'
+import carDetailsData from '../../data/carDetails.json'
 
 export const UserSignUp = (values) => {
   return {
@@ -29,9 +37,43 @@ export const HandleModel = (values) => {
   }
 }
 
-export const updateLike = (car_id) => {
-  return {
-    type: UPDATE_LIKE,
-    payload: car_id
+export const fetchDataRequest = () => ({
+  type: 'FETCH_DATA_REQUEST'
+})
+
+export const fetchDataSuccess = (data) => ({
+  type: 'FETCH_DATA_SUCCESS',
+  payload: data
+})
+
+export const fetchDataError = (error) => ({
+  type: 'FETCH_DATA_ERROR',
+  payload: error
+})
+
+export const getCarDetails = () => {
+  return async (dispatch) => {
+    dispatch(fetchDataRequest())
+    try {
+      dispatch(fetchDataSuccess(carDetailsData))
+    } catch (error) {
+      dispatch(fetchDataError(error.message))
+    }
   }
 }
+
+export const addToWishlist = (userId, carId) => ({
+  type: ADD_TO_WISHLIST,
+  payload: {
+    userId,
+    carId
+  }
+})
+
+export const removeFromWishlist = (userId, carId) => ({
+  type: REMOVE_FROM_WISHLIST,
+  payload: {
+    userId,
+    carId
+  }
+})

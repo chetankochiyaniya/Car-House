@@ -21,7 +21,7 @@ const userManagementReducer = (state = initialState, action) => {
         loggedInUser: [payload]
       }
     case SIGNIN_USER:
-      data = state.users?.filter((user) => payload.values.email == user.values.email)
+      data = state.users.filter((user) => payload.values.email == user.values.email)
       if (
         payload.values.email === state.adminUser &&
         payload.values.password === state.adminPassword

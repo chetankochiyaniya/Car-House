@@ -38,7 +38,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/dashboard" element={<AdminRoute component={AdminDashbord} />} />
-        <Route path="/wishlist" element={<WishList />} />
+        <Route path="wishlist" element={<WishList />} />
       </Routes>
     </>
   )
