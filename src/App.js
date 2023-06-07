@@ -11,6 +11,7 @@ import { ToastContainer } from 'react-toastify'
 import AdminRoute from './routes/AdminRoute'
 import WishList from './components/Wishlist'
 import PrivateRoute from './routes/PrivateRoute'
+import Chat from './components/General/ChatSupport'
 
 const AdminDashbord = lazy(() => import('./components/Dashboard'))
 
@@ -30,6 +31,7 @@ function App() {
         pauseOnHover
         theme="light"
       />
+      <Chat />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<AllCars />} />
