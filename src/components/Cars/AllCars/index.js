@@ -9,7 +9,8 @@ import {
   Select,
   Button,
   Typography,
-  Pagination
+  Pagination,
+  Tooltip
 } from '@mui/material'
 import Banner from '../Banner'
 import './index.css'
@@ -17,6 +18,7 @@ import { useNavigate } from 'react-router-dom'
 import Footer from '../../General/Footer'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist, getCarDetails, removeFromWishlist } from '../../../redux/actions'
+import { CircularProgress } from '@mui/material'
 
 const AllCars = () => {
   const navigate = useNavigate()
@@ -33,11 +35,11 @@ const AllCars = () => {
 
   const [currentPage, setCurrentPage] = useState(1)
   const itemsPerPage = 6
-  
+
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
   const { loggedInUser } = useSelector((state) => state.userManagementReducer)
   const wishlist = useSelector((state) => state.wishlistReducer)
-  
+
   const [filteredData, setFilteredData] = useState(data)
 
   useEffect(() => {
@@ -45,7 +47,7 @@ const AllCars = () => {
   }, [dispatch])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <CircularProgress color="error" />
   }
 
   if (error) {
@@ -114,12 +116,11 @@ const AllCars = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredData?.slice(indexOfFirstItem, indexOfLastItem)
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page)
   }
-
 
   return (
     <>
@@ -293,29 +294,33 @@ const AllCars = () => {
                           <Typography color="var(--link-color)">
                             {loggedInUser !== null ? (
                               wishlist[loggedInUser[0].values.email]?.includes(car.car_id) ? (
-                                <i
-                                  className="fa fa-heart fa-lg"
-                                  aria-hidden="true"
-                                  onClick={() =>
-                                    dispatch(
-                                      removeFromWishlist(
-                                        loggedInUser[0].values.email,
+                                <Tooltip title="Remove from wishlist">
+                                  <i
+                                    className="fa fa-heart fa-lg"
+                                    aria-hidden="true"
+                                    onClick={() =>
+                                      dispatch(
+                                        removeFromWishlist(
+                                          loggedInUser[0].values.email,
 
-                                        car.car_id
+                                          car.car_id
+                                        )
                                       )
-                                    )
-                                  }
-                                />
+                                    }
+                                  />
+                                </Tooltip>
                               ) : (
-                                <i
-                                  className="fa fa-heart-o fa-lg"
-                                  aria-hidden="true"
-                                  onClick={() =>
-                                    dispatch(
-                                      addToWishlist(loggedInUser[0].values.email, car.car_id)
-                                    )
-                                  }
-                                />
+                                <Tooltip title="Add into wishlist">
+                                  <i
+                                    className="fa fa-heart-o fa-lg"
+                                    aria-hidden="true"
+                                    onClick={() =>
+                                      dispatch(
+                                        addToWishlist(loggedInUser[0].values.email, car.car_id)
+                                      )
+                                    }
+                                  />
+                                </Tooltip>
                               )
                             ) : (
                               ''

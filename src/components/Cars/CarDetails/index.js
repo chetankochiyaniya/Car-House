@@ -5,6 +5,7 @@ import 'react-responsive-carousel/lib/styles/carousel.min.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { getCarDetails } from '../../../redux/actions'
 import { useParams } from 'react-router-dom'
+import { CircularProgress } from '@mui/material'
 import './index.css'
 
 const CarDetails = () => {
@@ -24,7 +25,7 @@ const CarDetails = () => {
   }, [dispatch])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <CircularProgress color="error" />
   }
 
   if (error) {

@@ -1,11 +1,11 @@
-import { CircularProgress } from '@mui/material'
 import React, { Suspense } from 'react'
 import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import { CircularProgress } from '@mui/material'
 
-function AdminRoute({ component: Component }) {
-  const adminRole = useSelector((state) => state.userManagementReducer.adminRole)
-  return adminRole ? (
+function PrivateRoute({ component: Component }) {
+  const loggedInUser = useSelector((state) => state.userManagementReducer.loggedInUser)
+  return loggedInUser ? (
     <Suspense
       fallback={
         <>
@@ -19,4 +19,4 @@ function AdminRoute({ component: Component }) {
   )
 }
 
-export default AdminRoute
+export default PrivateRoute

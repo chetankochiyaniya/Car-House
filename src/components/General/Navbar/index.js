@@ -216,56 +216,67 @@ function Navbar() {
                 <i className="fa fa-sign-in fa-2x" aria-hidden="true"></i>
               </Button>
             ) : (
-              <Box sx={{ flexGrow: 0 }}>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ms: 2 }}>
-                    <Avatar
-                      alt={loggedInUser[0].values.name.toUpperCase()}
-                      src="/static/images/avatar/2.jpg"
-                    />
-                  </IconButton>
-                </Tooltip>
-                <Menu
-                  sx={{ mt: '45px' }}
-                  id="menu-appbar"
-                  anchorEl={anchorElUser}
-                  anchorOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  keepMounted
-                  transformOrigin={{
-                    vertical: 'top',
-                    horizontal: 'right'
-                  }}
-                  open={Boolean(anchorElUser)}
-                  onClose={handleCloseUserMenu}>
-                  <Typography sx={{ marginLeft: 2, marginRight: 2, fontWeight: 700 }}>
-                    Profile Info
-                  </Typography>
-                  <Divider />
-                  <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
-                    name: {loggedInUser[0].values.name}
-                  </Typography>
-                  <Typography sx={{ marginLeft: 2, marginRight: 2 }}>
-                    email: {loggedInUser[0].values.email}
-                  </Typography>
-                  <Divider />
-                  <Divider />
-                  <MenuItem onClick={handleCloseUserMenu}>
-                    <Button
-                      variant="contained"
-                      size="small"
-                      sx={{
-                        backgroundColor: 'var(--red-color)',
-                        '&:hover': { backgroundColor: 'var(--btn-hover)' }
-                      }}
-                      onClick={handleSignout}>
-                      SignOut
-                    </Button>
-                  </MenuItem>
-                </Menu>
-              </Box>
+              <>
+                <Box sx={{ flexGrow: 0 }}>
+                  <Tooltip title="Open settings">
+                    <IconButton onClick={handleOpenUserMenu} sx={{ p: 0, ms: 2 }}>
+                      <Avatar
+                        alt={loggedInUser[0].values.name.toUpperCase()}
+                        src="/static/images/avatar/2.jpg"
+                      />
+                    </IconButton>
+                  </Tooltip>
+                  <Menu
+                    sx={{ mt: '45px' }}
+                    id="menu-appbar"
+                    anchorEl={anchorElUser}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right'
+                    }}
+                    open={Boolean(anchorElUser)}
+                    onClose={handleCloseUserMenu}>
+                    <Typography sx={{ marginLeft: 2, marginRight: 2, fontWeight: 700 }}>
+                      Profile Info
+                    </Typography>
+                    <Divider />
+                    <Typography sx={{ marginLeft: 2, marginRight: 2, marginTop: 1 }}>
+                      <b>name:</b> {loggedInUser[0].values.name}
+                    </Typography>
+                    <Typography sx={{ marginLeft: 2, marginRight: 2, marginBottom: 1 }}>
+                      <b>email:</b> {loggedInUser[0].values.email}
+                    </Typography>
+                    <Divider />
+                    <Tooltip title="my deam cars">
+                      <Typography
+                        sx={{ marginLeft: 2, marginRight: 2, marginTop: 1, marginBottom: 1 }}
+                        onClick={() => navigate('/wishlist')}>
+                        <b>my wishlist</b> <i className="fa fa-heart" aria-hidden="true" />
+                      </Typography>
+                    </Tooltip>
+
+                    <Divider />
+                    <Divider />
+                    <MenuItem onClick={handleCloseUserMenu} sx={{ marginTop: 1 }}>
+                      <Button
+                        variant="contained"
+                        size="small"
+                        sx={{
+                          backgroundColor: 'var(--red-color)',
+                          '&:hover': { backgroundColor: 'var(--btn-hover)' }
+                        }}
+                        onClick={handleSignout}>
+                        SignOut
+                      </Button>
+                    </MenuItem>
+                  </Menu>
+                </Box>
+              </>
             )}
           </Toolbar>
         </Container>
