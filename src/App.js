@@ -9,6 +9,8 @@ import Contact from './components/Contact'
 import Team from './components/Team'
 import { ToastContainer } from 'react-toastify'
 import AdminRoute from './routes/AdminRoute'
+import WishList from './components/Wishlist'
+import PrivateRoute from './routes/PrivateRoute'
 
 const AdminDashbord = lazy(() => import('./components/Dashboard'))
 
@@ -37,6 +39,7 @@ function App() {
         <Route path="/team" element={<Team />} />
         <Route path="*" element={<Navigate to="/" />} />
         <Route path="/dashboard" element={<AdminRoute component={AdminDashbord} />} />
+        <Route path="/wishlist" element={<PrivateRoute component={WishList} />} />
       </Routes>
     </>
   )

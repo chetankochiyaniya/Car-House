@@ -1,4 +1,11 @@
-import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
+import {
+  ADD_USER,
+  SIGNOUT,
+  MODEL,
+  SIGNIN_USER,
+  ADD_TO_WISHLIST,
+  REMOVE_FROM_WISHLIST
+} from '../constant'
 import carDetailsData from '../../data/carDetails.json'
 
 export const UserSignUp = (values) => {
@@ -54,3 +61,19 @@ export const getCarDetails = () => {
     }
   }
 }
+
+export const addToWishlist = (userId, carId) => ({
+  type: ADD_TO_WISHLIST,
+  payload: {
+    userId,
+    carId
+  }
+})
+
+export const removeFromWishlist = (userId, carId) => ({
+  type: REMOVE_FROM_WISHLIST,
+  payload: {
+    userId,
+    carId
+  }
+})

@@ -1,20 +1,22 @@
 import React, { useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { Typography, Container, Grid, Box, Button } from '@mui/material'
+import { Typography, Container, Grid, Box, Button, Tooltip } from '@mui/material'
 import './index.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCarDetails } from '../../../redux/actions'
+import { addToWishlist, getCarDetails, removeFromWishlist } from '../../../redux/actions'
 
 function FeaturedCar() {
   const dispatch = useDispatch()
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+  const { loggedInUser } = useSelector((state) => state.userManagementReducer)
+  const wishlist = useSelector((state) => state.wishlistReducer)
 
   useEffect(() => {
     dispatch(getCarDetails())
   }, [dispatch])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <CircularProgress color="error" />
   }
 
   if (error) {
@@ -70,11 +72,46 @@ function FeaturedCar() {
                       <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
                       <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                     </Typography>
-                    <Typography
-                      color="var(--link-color)"
-                      onClick={() => navigate(`/car-details/${car.car_id}`)}>
-                      + View Car
-                    </Typography>
+                    <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                      <Typography
+                        color="var(--link-color)"
+                        onClick={() => navigate(`/car-details/${car.car_id}`)}>
+                        + View Car
+                      </Typography>
+                      <Typography color="var(--link-color)">
+                        {loggedInUser !== null ? (
+                          wishlist[loggedInUser[0].values.email]?.includes(car.car_id) ? (
+                            <Tooltip title="Remove from wishlist">
+                              <i
+                                className="fa fa-heart fa-lg"
+                                aria-hidden="true"
+                                onClick={() =>
+                                  dispatch(
+                                    removeFromWishlist(
+                                      loggedInUser[0].values.email,
+
+                                      car.car_id
+                                    )
+                                  )
+                                }
+                              />
+                            </Tooltip>
+                          ) : (
+                            <Tooltip title="Add into wishlist">
+                              <i
+                                className="fa fa-heart-o fa-lg"
+                                aria-hidden="true"
+                                onClick={() =>
+                                  dispatch(addToWishlist(loggedInUser[0].values.email, car.car_id))
+                                }
+                              />
+                            </Tooltip>
+                          )
+                        ) : (
+                          ''
+                        )}
+                      </Typography>
+                    </Box>
                   </Box>
                 </Box>
               </Grid>

@@ -9,14 +9,16 @@ import {
   Select,
   Button,
   Typography,
-  Pagination
+  Pagination,
+  Tooltip
 } from '@mui/material'
 import Banner from '../Banner'
 import './index.css'
 import { useNavigate } from 'react-router-dom'
 import Footer from '../../General/Footer'
 import { useDispatch, useSelector } from 'react-redux'
-import { getCarDetails } from '../../../redux/actions'
+import { addToWishlist, getCarDetails, removeFromWishlist } from '../../../redux/actions'
+import { CircularProgress } from '@mui/material'
 
 const AllCars = () => {
   const navigate = useNavigate()
@@ -35,6 +37,9 @@ const AllCars = () => {
   const itemsPerPage = 6
 
   const { data, isLoading, error } = useSelector((state) => state.fetchDataReducer)
+  const { loggedInUser } = useSelector((state) => state.userManagementReducer)
+  const wishlist = useSelector((state) => state.wishlistReducer)
+
   const [filteredData, setFilteredData] = useState(data)
 
   useEffect(() => {
@@ -42,7 +47,7 @@ const AllCars = () => {
   }, [dispatch])
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <CircularProgress color="error" />
   }
 
   if (error) {
@@ -111,7 +116,7 @@ const AllCars = () => {
 
   const indexOfLastItem = currentPage * itemsPerPage
   const indexOfFirstItem = indexOfLastItem - itemsPerPage
-  const currentItems = filteredData.slice(indexOfFirstItem, indexOfLastItem)
+  const currentItems = filteredData?.slice(indexOfFirstItem, indexOfLastItem)
 
   const handlePageChange = (event, page) => {
     setCurrentPage(page)
@@ -280,11 +285,48 @@ const AllCars = () => {
                           <i className="fa fa-cube"></i> {car.tabOne[6].value} &nbsp;&nbsp;&nbsp;
                           <i className="fa fa-cog"></i> {car.tabOne[5].value} &nbsp;&nbsp;&nbsp;
                         </Typography>
-                        <Typography
-                          color="var(--link-color)"
-                          onClick={() => navigate(`/car-details/${car.car_id}`)}>
-                          + View Car
-                        </Typography>
+                        <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
+                          <Typography
+                            color="var(--link-color)"
+                            onClick={() => navigate(`/car-details/${car.car_id}`)}>
+                            + View Car
+                          </Typography>
+                          <Typography color="var(--link-color)">
+                            {loggedInUser !== null ? (
+                              wishlist[loggedInUser[0].values.email]?.includes(car.car_id) ? (
+                                <Tooltip title="Remove from wishlist">
+                                  <i
+                                    className="fa fa-heart fa-lg"
+                                    aria-hidden="true"
+                                    onClick={() =>
+                                      dispatch(
+                                        removeFromWishlist(
+                                          loggedInUser[0].values.email,
+
+                                          car.car_id
+                                        )
+                                      )
+                                    }
+                                  />
+                                </Tooltip>
+                              ) : (
+                                <Tooltip title="Add into wishlist">
+                                  <i
+                                    className="fa fa-heart-o fa-lg"
+                                    aria-hidden="true"
+                                    onClick={() =>
+                                      dispatch(
+                                        addToWishlist(loggedInUser[0].values.email, car.car_id)
+                                      )
+                                    }
+                                  />
+                                </Tooltip>
+                              )
+                            ) : (
+                              ''
+                            )}
+                          </Typography>
+                        </Box>
                       </Box>
                     </Box>
                   </Grid>
