@@ -11,17 +11,38 @@ import {
   Button
 } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
+import { useDispatch, useSelector } from 'react-redux'
+import { HandleModel } from '../../../redux/actions'
+import { toast } from 'react-toastify'
 
 const ChatSupport = () => {
+  const { loggedInUser } = useSelector((state) => state.userManagementReducer)
   const [open, setOpen] = useState(false)
   const [message, setMessage] = useState('')
   const [chatMessages, setChatMessages] = useState([
     { id: 1, text: 'Hello, how can I assist you?', sender: 'Admin' }
   ])
   const chatContainerRef = useRef(null)
+  const dispatch = useDispatch()
 
+  const showErrorToast = () =>
+    toast.error('For any inquiry..sign-in/sign-up!', {
+      position: 'top-center',
+      autoClose: 2000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: 'light'
+    })
   const handleToggleDialog = () => {
-    setOpen(!open)
+    if (loggedInUser !== null) {
+      setOpen(!open)
+    } else {
+      showErrorToast()
+      dispatch(HandleModel(true))
+    }
   }
 
   const handleSendMessage = () => {
