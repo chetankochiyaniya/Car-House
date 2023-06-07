@@ -1,4 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
+
 import Box from '@mui/material/Box'
 import {
   Avatar,
@@ -14,6 +15,7 @@ import SendIcon from '@mui/icons-material/Send'
 import { useDispatch, useSelector } from 'react-redux'
 import { HandleModel } from '../../../redux/actions'
 import { toast } from 'react-toastify'
+import axios from 'axios'
 
 const ChatSupport = () => {
   const { loggedInUser } = useSelector((state) => state.userManagementReducer)
@@ -36,6 +38,7 @@ const ChatSupport = () => {
       progress: undefined,
       theme: 'light'
     })
+
   const handleToggleDialog = () => {
     if (loggedInUser !== null) {
       setOpen(!open)
@@ -46,6 +49,7 @@ const ChatSupport = () => {
   }
 
   const handleSendMessage = () => {
+    event?.preventDefault
     if (message.trim() === '') {
       return
     }
@@ -58,6 +62,8 @@ const ChatSupport = () => {
 
     setChatMessages((prevMessages) => [...prevMessages, newMessage])
     setMessage('')
+
+    sendChatMessage(user?.id, message, user?.username) // Pass the message as an argument
   }
 
   useEffect(() => {
@@ -66,6 +72,124 @@ const ChatSupport = () => {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
   }, [chatMessages])
+
+  function getOrCreateUser(callback) {
+    axios
+      .put(
+        'https://api.chatengine.io/users/',
+        {
+          username: loggedInUser[0]?.values.email,
+          email: loggedInUser[0]?.values.email,
+          secret: loggedInUser[0]?.values.email
+        },
+        { headers: { 'Private-Key': process.env.REACT_APP_PRIVATE_KEY } }
+      )
+      .then((r) => callback(r.data))
+      .catch((e) => console.log('Get or create user error', e))
+  }
+
+  function getOrCreateChat(callback) {
+    axios
+      .put(
+        'https://api.chatengine.io/chats/',
+        { usernames: [loggedInUser[0]?.values.email, 'Chetan_Kochiyaniya'], is_direct_chat: true },
+        {
+          headers: {
+            'Project-ID': process.env.REACT_APP_PROJECT_ID,
+            'User-Name': loggedInUser[0]?.values.email,
+            'User-Secret': loggedInUser[0]?.values.email
+          }
+        }
+      )
+      .then((r) => callback(r.data))
+      .catch((e) => console.log('Get or create chat error', e))
+  }
+
+  const [user, setUser] = useState()
+  const [chat, setChat] = useState()
+  function handleData() {
+    console.log('Sending Email', loggedInUser[0]?.values.email, 'user===', user, 'chat-===', chat)
+
+    getOrCreateUser((user) => {
+      setUser(user)
+      console.log('user', user)
+      getOrCreateChat((chat) => {
+        setChat(chat)
+        console.log('chat', chat)
+      })
+    })
+  }
+
+  // const sendChatMessage = async (chatId, message, senderUsername) => {
+  //   try {
+  //     const payload = {
+  //       "text": message
+  //     }
+
+  //     await axios.post(`https://api.chatengine.io/chats/179025/messages/`, {
+  //       headers: {
+  //         'Project-ID': process.env.REACT_APP_PROJECT_ID,
+  //         'User-Name': senderUsername,
+  //         'User-Secret': senderUsername
+  //       },
+  //       body: JSON.stringify(payload)
+  //     })
+  //     console.log('Message sent successfully!')
+  //   } catch (error) {
+  //     console.log('Error sending message:', error)
+  //   }
+  // }
+
+  const sendChatMessage = async (chatId, message, senderUsername) => {
+    try {
+      const payload = {
+        text: 'Hello world!'
+      }
+
+      const requestOptions = {
+        method: 'POST',
+        headers: {
+          'Project-ID': process.env.REACT_APP_PROJECT_ID,
+          'User-Name': senderUsername,
+          'User-Secret': senderUsername
+        },
+        body: JSON.stringify(payload),
+        redirect: 'follow'
+      }
+
+      const response = await axios.post(
+        `https://api.chatengine.io/chats/${chatId}/messages/`,
+        requestOptions
+      )
+      console.log('Message sent successfully!', response.data)
+    } catch (error) {
+      console.log('Error sending message:', error)
+    }
+  }
+
+  // Function to retrieve messages
+  const retrieveChatMessages = async () => {
+    try {
+      const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
+        headers: {
+          'Project-ID': process.env.REACT_APP_PROJECT_ID,
+          'User-Name': loggedInUser[0]?.values.email,
+          'User-Secret': loggedInUser[0]?.values.email
+        }
+      })
+      const messages = response.data
+      console.log('Retrieved messages:', messages)
+      // Process and use the retrieved messages as needed
+      // Update the chatMessages state with the retrieved messages
+      setChatMessages(messages)
+    } catch (error) {
+      console.log('Error retrieving messages:', error)
+    }
+  }
+
+  useEffect(() => {
+    handleData()
+  }, [])
 
   return (
     <>
@@ -157,13 +281,23 @@ const ChatSupport = () => {
             />
             <Button
               variant="contained"
-              onClick={handleSendMessage}
+              onClick={() => handleSendMessage(event)}
               sx={{
                 marginLeft: '1rem',
                 backgroundColor: 'var(--red-color)',
                 '&:hover': { backgroundColor: 'var(--btn-hover)' }
               }}>
               <SendIcon />
+            </Button>
+            <Button
+              variant="contained"
+              onClick={retrieveChatMessages}
+              sx={{
+                marginLeft: '1rem',
+                backgroundColor: 'var(--red-color)',
+                '&:hover': { backgroundColor: 'var(--btn-hover)' }
+              }}>
+              get
             </Button>
           </div>
         </DialogContent>
