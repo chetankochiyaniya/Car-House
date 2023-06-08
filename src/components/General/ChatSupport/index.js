@@ -178,13 +178,10 @@ const ChatSupport = () => {
 
   useEffect(() => {
     handleData()
-
     // Retrieve messages initially
     retrieveChatMessages()
-
-    // Retrieve messages at regular intervals (every 10 seconds in this example)
+    // Retrieve messages at regular intervals (every 1 seconds in this example)
     const interval = setInterval(retrieveChatMessages, 1000)
-
     // Clean up the interval when the component unmounts
     return () => clearInterval(interval)
   }, [])
