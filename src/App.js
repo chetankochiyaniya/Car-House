@@ -1,6 +1,5 @@
 import React, { lazy } from 'react'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Navbar from './components/General/Navbar'
 import Home from './components/Home'
 import AllCars from './components/Cars/AllCars'
 import CardDetails from './components/Cars/CarDetails'
@@ -11,14 +10,14 @@ import { ToastContainer } from 'react-toastify'
 import AdminRoute from './routes/AdminRoute'
 import WishList from './components/Wishlist'
 import PrivateRoute from './routes/PrivateRoute'
-import Chat from './components/General/ChatSupport'
+import General from './components/General'
 
-const AdminDashbord = lazy(() => import('./components/Dashboard'))
+const AdminDashbord = lazy(() => import('./Dashboard'))
 
 function App() {
   return (
     <>
-      <Navbar />
+      <General />
       <ToastContainer
         position="top-center"
         autoClose={2000}
@@ -31,7 +30,6 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <Chat />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/cars" element={<AllCars />} />

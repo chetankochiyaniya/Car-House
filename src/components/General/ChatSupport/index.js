@@ -76,18 +76,19 @@ const ChatSupport = () => {
   }, [chatMessages])
 
   function getOrCreateUser(callback) {
-    axios
-      .put(
-        'https://api.chatengine.io/users/',
-        {
-          username: loggedInUser[0]?.values.email,
-          email: loggedInUser[0]?.values.email,
-          secret: loggedInUser[0]?.values.email
-        },
-        { headers: { 'Private-Key': process.env.REACT_APP_PRIVATE_KEY } }
-      )
-      .then((r) => callback(r.data))
-      .catch(() => showErrorToast('API Error : Create user error'))
+    loggedInUser &&
+      axios
+        .put(
+          'https://api.chatengine.io/users/',
+          {
+            username: loggedInUser[0]?.values.email,
+            email: loggedInUser[0]?.values.email,
+            secret: loggedInUser[0]?.values.email
+          },
+          { headers: { 'Private-Key': process.env.REACT_APP_PRIVATE_KEY } }
+        )
+        .then((r) => callback(r.data))
+        .catch(() => showErrorToast('API Error : Create user error'))
   }
 
   function getOrCreateChat(callback) {
@@ -154,7 +155,7 @@ const ChatSupport = () => {
       setLoading(false)
     }
   }
-
+  console.log(chat)
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
     try {
@@ -171,9 +172,7 @@ const ChatSupport = () => {
       console.log('Retrieved messages:', messages)
       setChatMessages(messages)
     } catch (error) {
-      showErrorToast('Error retrieving messages')
       setLoading(false)
-      alert(false)
     }
   }
 
@@ -268,7 +267,7 @@ const ChatSupport = () => {
                     marginBottom: '0.5rem',
                     width: 'max-content',
                     maxWidth: '75%',
-                    marginLeft: chat.sender_username === 'Chetan_Kochiyaniya' ? 'auto' : 0
+                    marginLeft: chat.sender_username !== 'Chetan_Kochiyaniya' ? 'auto' : 0
                   }}>
                   {chat.text}
                 </div>
