@@ -43,6 +43,7 @@ const ChatSupport = () => {
 
   const handleToggleDialog = () => {
     if (loggedInUser !== null) {
+      handleData()
       setOpen(!open)
     } else {
       showErrorToast('For any inquiry..! sign-in/sign-up')
@@ -117,6 +118,7 @@ const ChatSupport = () => {
       console.log('user', user)
       getOrCreateChat((chat) => {
         setChat(chat)
+        retrieveChatMessages()
         console.log('chat', chat)
       })
     })
@@ -254,24 +256,29 @@ const ChatSupport = () => {
               marginBottom: '1rem'
             }}>
             {chatMessages.length > 0 ? (
-              chatMessages.map((chat) => (
-                <div
-                  key={chat.id}
-                  style={{
-                    background:
-                      chat.sender_username !== 'Chetan_Kochiyaniya'
-                        ? 'rgb(188 214 234)'
-                        : 'rgb(235 233 234)',
-                    padding: '0.5rem 1rem',
-                    borderRadius: '0.5rem',
-                    marginBottom: '0.5rem',
-                    width: 'max-content',
-                    maxWidth: '75%',
-                    marginLeft: chat.sender_username !== 'Chetan_Kochiyaniya' ? 'auto' : 0
-                  }}>
-                  {chat.text}
-                </div>
-              ))
+              chatMessages.map((chat) => {
+                let res = chat.text
+                let msg = res.replace(/<[^>]+>/g, '')
+
+                return (
+                  <div
+                    key={chat.id}
+                    style={{
+                      background:
+                        chat.sender_username !== 'Chetan_Kochiyaniya'
+                          ? 'rgb(188 214 234)'
+                          : 'rgb(235 233 234)',
+                      padding: '0.5rem 1rem',
+                      borderRadius: '0.5rem',
+                      marginBottom: '0.5rem',
+                      width: 'max-content',
+                      maxWidth: '75%',
+                      marginLeft: chat.sender_username !== 'Chetan_Kochiyaniya' ? 'auto' : 0
+                    }}>
+                    {msg}
+                  </div>
+                )
+              })
             ) : (
               <Typography sx={{ display: 'flex', justifyContent: 'center' }}>
                 Welcome to Car House
