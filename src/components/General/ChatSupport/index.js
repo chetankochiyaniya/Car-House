@@ -16,14 +16,13 @@ import { useDispatch, useSelector } from 'react-redux'
 import { HandleModel } from '../../../redux/actions'
 import { toast } from 'react-toastify'
 import axios from 'axios'
+import HistoryIcon from '@mui/icons-material/History'
 
 const ChatSupport = () => {
   const { loggedInUser } = useSelector((state) => state.userManagementReducer)
   const [open, setOpen] = useState(false)
   const [message, setMessage] = useState('')
-  const [chatMessages, setChatMessages] = useState([
-    { id: 1, text: 'Hello, how can I assist you?', sender: 'Admin' }
-  ])
+  const [chatMessages, setChatMessages] = useState([])
   const chatContainerRef = useRef(null)
   const dispatch = useDispatch()
 
@@ -57,13 +56,13 @@ const ChatSupport = () => {
     const newMessage = {
       id: chatMessages.length + 1,
       text: message,
-      sender: 'User'
+      sender: user?.username
     }
 
     setChatMessages((prevMessages) => [...prevMessages, newMessage])
     setMessage('')
 
-    sendChatMessage(user?.id, message, user?.username) // Pass the message as an argument
+    sendChatMessage(chat?.id, message, user?.username) // Pass the message as an argument
   }
 
   useEffect(() => {
@@ -107,9 +106,8 @@ const ChatSupport = () => {
 
   const [user, setUser] = useState()
   const [chat, setChat] = useState()
-  function handleData() {
-    console.log('Sending Email', loggedInUser[0]?.values.email, 'user===', user, 'chat-===', chat)
 
+  function handleData() {
     getOrCreateUser((user) => {
       setUser(user)
       console.log('user', user)
@@ -120,48 +118,31 @@ const ChatSupport = () => {
     })
   }
 
-  // const sendChatMessage = async (chatId, message, senderUsername) => {
-  //   try {
-  //     const payload = {
-  //       "text": message
-  //     }
-
-  //     await axios.post(`https://api.chatengine.io/chats/179025/messages/`, {
-  //       headers: {
-  //         'Project-ID': process.env.REACT_APP_PROJECT_ID,
-  //         'User-Name': senderUsername,
-  //         'User-Secret': senderUsername
-  //       },
-  //       body: JSON.stringify(payload)
-  //     })
-  //     console.log('Message sent successfully!')
-  //   } catch (error) {
-  //     console.log('Error sending message:', error)
-  //   }
-  // }
-
-  const sendChatMessage = async (chatId, message, senderUsername) => {
+  const sendChatMessage = async (chatId, message) => {
     try {
-      const payload = {
-        text: 'Hello world!'
-      }
+      const data = JSON.stringify({
+        text: message
+      })
 
-      const requestOptions = {
-        method: 'POST',
+      const config = {
+        method: 'post',
+        url: `https://api.chatengine.io/chats/${chatId}/messages/`,
         headers: {
-          'Project-ID': process.env.REACT_APP_PROJECT_ID,
-          'User-Name': senderUsername,
-          'User-Secret': senderUsername
+          'Project-ID': '08b634e6-f6e7-479c-a9b2-730d5ddb76cd',
+          'User-Name': user.username,
+          'User-Secret': user.username,
+          'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload),
-        redirect: 'follow'
+        data: data
       }
 
-      const response = await axios.post(
-        `https://api.chatengine.io/chats/${chatId}/messages/`,
-        requestOptions
-      )
-      console.log('Message sent successfully!', response.data)
+      axios(config)
+        .then(function (response) {
+          console.log(JSON.stringify(response.data))
+        })
+        .catch(function (error) {
+          console.log(error)
+        })
     } catch (error) {
       console.log('Error sending message:', error)
     }
@@ -179,8 +160,6 @@ const ChatSupport = () => {
       })
       const messages = response.data
       console.log('Retrieved messages:', messages)
-      // Process and use the retrieved messages as needed
-      // Update the chatMessages state with the retrieved messages
       setChatMessages(messages)
     } catch (error) {
       console.log('Error retrieving messages:', error)
@@ -257,13 +236,16 @@ const ChatSupport = () => {
               <div
                 key={chat.id}
                 style={{
-                  background: chat.sender === 'User' ? 'rgb(188 214 234)' : 'rgb(235 233 234)',
+                  background:
+                    chat.sender_username === 'Chetan_Kochiyaniya'
+                      ? 'rgb(188 214 234)'
+                      : 'rgb(235 233 234)',
                   padding: '0.5rem 1rem',
                   borderRadius: '0.5rem',
                   marginBottom: '0.5rem',
                   width: 'max-content',
                   maxWidth: '75%',
-                  marginLeft: chat.sender !== 'User' ? 'auto' : 0
+                  marginLeft: chat.sender_username === 'Chetan_Kochiyaniya' ? 'auto' : 0
                 }}>
                 {chat.text}
               </div>
@@ -293,11 +275,12 @@ const ChatSupport = () => {
               variant="contained"
               onClick={retrieveChatMessages}
               sx={{
+                minWidth: '36px',
                 marginLeft: '1rem',
-                backgroundColor: 'var(--red-color)',
-                '&:hover': { backgroundColor: 'var(--btn-hover)' }
+                backgroundColor: '#aa9c99',
+                '&:hover': { backgroundColor: '#aa9c997d' }
               }}>
-              get
+              <HistoryIcon />
             </Button>
           </div>
         </DialogContent>
