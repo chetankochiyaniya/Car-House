@@ -1,6 +1,7 @@
 import { Container } from '@mui/system'
 import React from 'react'
 import { ChatEngine } from 'react-chat-engine'
+import './index.css'
 
 const AdminChatSupport = () => {
   return (

@@ -1,0 +1,83 @@
+#new-chat-plus-button {
+  visibility: hidden;
+}
+
+.css-9aekf8-MuiContainer-root {
+  border: 2px;
+  padding: 30px;
+  border-radius: 40px;
+  box-shadow: 0px 0px 15px rgb(0 0 0 / 10%);
+}
+
+.ce-chats-container {
+  width: 90% !important;
+}
+.ql-bold {
+  display: none !important;
+}
+.ql-underline {
+  display: none !important;
+}
+.ql-italic {
+  display: none !important;
+}
+.ql-strike {
+  display: none !important;
+}
+.ql-code {
+  display: none !important;
+}
+.ce-attachment-icon {
+  display: none !important;
+}
+.ql-link {
+  display: none !important;
+}
+.quill {
+  width: 82% !important;
+  margin-left: 48px !important;
+}
+
+.ql-toolbar {
+  border: none !important;
+}
+.ce-send-button-container {
+  position: absolute !important;
+  right: 13px !important;
+  bottom: 54px !important;
+}
+.ql-editor {
+  padding: 9px 15px !important;
+}
+.ce-settings-column {
+  display: none !important;
+}
+.ce-chat-feed-column {
+  width: 75% !important;
+  flex: 0 0 75% !important;
+  max-width: 75% !important;
+}
+.anticon-arrow-up {
+  display: none;
+}
+
+#ce-send-message-button span {
+  display: none;
+}
+
+#ce-send-message-button::before {
+  content: 'Send';
+  display: inline-block;
+  padding: 2px 9px !important;
+  background-color: rgb(24, 144, 255);
+  border-radius: 8px;
+  color: white;
+}
+.ce-their-message-avatar {
+  display: none !important;
+}
+.ce-quill-container {
+  margin-top: 5px !important;
+  border-top: 1px solid rgb(175, 175, 175) !important;
+  padding-top: 24px !important;
+}
