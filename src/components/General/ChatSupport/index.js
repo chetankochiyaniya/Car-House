@@ -161,7 +161,6 @@ const ChatSupport = () => {
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
     try {
-      setLoading(true)
       const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
         headers: {
           'Project-ID': process.env.REACT_APP_PROJECT_ID,
@@ -170,7 +169,6 @@ const ChatSupport = () => {
         }
       })
       const messages = response.data
-      setLoading(false)
       console.log('Retrieved messages:', messages)
       setChatMessages(messages)
     } catch (error) {
@@ -180,6 +178,15 @@ const ChatSupport = () => {
 
   useEffect(() => {
     handleData()
+
+    // Retrieve messages initially
+    retrieveChatMessages()
+
+    // Retrieve messages at regular intervals (every 10 seconds in this example)
+    const interval = setInterval(retrieveChatMessages, 1000)
+
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval)
   }, [])
 
   return (
