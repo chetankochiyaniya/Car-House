@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from 'react'
-import { Box, Container, Grid, Typography, Pagination, Tooltip } from '@mui/material'
+import {
+  Box,
+  Container,
+  Grid,
+  Typography,
+  Pagination,
+  Tooltip,
+  CircularProgress
+} from '@mui/material'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 import { addToWishlist, getCarDetails, removeFromWishlist } from '../../redux/actions'
