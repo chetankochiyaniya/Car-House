@@ -9,7 +9,9 @@ import {
   DialogTitle,
   DialogContent,
   TextField,
-  Button
+  Button,
+  CircularProgress,
+  Typography
 } from '@mui/material'
 import SendIcon from '@mui/icons-material/Send'
 import { useDispatch, useSelector } from 'react-redux'
@@ -25,9 +27,10 @@ const ChatSupport = () => {
   const [chatMessages, setChatMessages] = useState([])
   const chatContainerRef = useRef(null)
   const dispatch = useDispatch()
+  const [loading, setLoading] = useState(false)
 
-  const showErrorToast = () =>
-    toast.error('For any inquiry..sign-in/sign-up!', {
+  const showErrorToast = (msg) =>
+    toast.error(msg, {
       position: 'top-center',
       autoClose: 2000,
       hideProgressBar: false,
@@ -42,7 +45,7 @@ const ChatSupport = () => {
     if (loggedInUser !== null) {
       setOpen(!open)
     } else {
-      showErrorToast()
+      showErrorToast('For any inquiry..! sign-in/sign-up')
       dispatch(HandleModel(true))
     }
   }
@@ -84,7 +87,7 @@ const ChatSupport = () => {
         { headers: { 'Private-Key': process.env.REACT_APP_PRIVATE_KEY } }
       )
       .then((r) => callback(r.data))
-      .catch((e) => console.log('Get or create user error', e))
+      .catch(() => showErrorToast('API Error : Create user error'))
   }
 
   function getOrCreateChat(callback) {
@@ -101,7 +104,7 @@ const ChatSupport = () => {
         }
       )
       .then((r) => callback(r.data))
-      .catch((e) => console.log('Get or create chat error', e))
+      .catch(() => showErrorToast('API Error : Create chat error'))
   }
 
   const [user, setUser] = useState()
@@ -120,6 +123,7 @@ const ChatSupport = () => {
 
   const sendChatMessage = async (chatId, message) => {
     try {
+      setLoading(true)
       const data = JSON.stringify({
         text: message
       })
@@ -139,18 +143,22 @@ const ChatSupport = () => {
       axios(config)
         .then(function (response) {
           console.log(JSON.stringify(response.data))
+          setLoading(false)
         })
-        .catch(function (error) {
-          console.log(error)
+        .catch(function () {
+          setLoading(false)
+          showErrorToast('API Error : send message error')
         })
     } catch (error) {
-      console.log('Error sending message:', error)
+      showErrorToast('Error sending message')
+      setLoading(false)
     }
   }
 
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
     try {
+      setLoading(true)
       const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
         headers: {
           'Project-ID': process.env.REACT_APP_PROJECT_ID,
@@ -159,10 +167,13 @@ const ChatSupport = () => {
         }
       })
       const messages = response.data
+      setLoading(false)
       console.log('Retrieved messages:', messages)
       setChatMessages(messages)
     } catch (error) {
-      console.log('Error retrieving messages:', error)
+      showErrorToast('Error retrieving messages')
+      setLoading(false)
+      alert(false)
     }
   }
 
@@ -225,6 +236,17 @@ const ChatSupport = () => {
             padding: '0.5rem 1rem',
             overflow: 'hidden'
           }}>
+          {loading && ( // Show CircularProgress if loading state is true
+            <CircularProgress
+              size={40}
+              sx={{
+                position: 'absolute',
+                top: '50%',
+                left: '50%',
+                transform: 'translate(-50%, -50%)'
+              }}
+            />
+          )}
           <div
             ref={chatContainerRef}
             style={{
@@ -232,26 +254,31 @@ const ChatSupport = () => {
               overflowY: 'auto',
               marginBottom: '1rem'
             }}>
-            {chatMessages.map((chat) => (
-              <div
-                key={chat.id}
-                style={{
-                  background:
-                    chat.sender_username === 'Chetan_Kochiyaniya'
-                      ? 'rgb(188 214 234)'
-                      : 'rgb(235 233 234)',
-                  padding: '0.5rem 1rem',
-                  borderRadius: '0.5rem',
-                  marginBottom: '0.5rem',
-                  width: 'max-content',
-                  maxWidth: '75%',
-                  marginLeft: chat.sender_username === 'Chetan_Kochiyaniya' ? 'auto' : 0
-                }}>
-                {chat.text}
-              </div>
-            ))}
+            {chatMessages.length > 0 ? (
+              chatMessages.map((chat) => (
+                <div
+                  key={chat.id}
+                  style={{
+                    background:
+                      chat.sender_username !== 'Chetan_Kochiyaniya'
+                        ? 'rgb(188 214 234)'
+                        : 'rgb(235 233 234)',
+                    padding: '0.5rem 1rem',
+                    borderRadius: '0.5rem',
+                    marginBottom: '0.5rem',
+                    width: 'max-content',
+                    maxWidth: '75%',
+                    marginLeft: chat.sender_username === 'Chetan_Kochiyaniya' ? 'auto' : 0
+                  }}>
+                  {chat.text}
+                </div>
+              ))
+            ) : (
+              <Typography sx={{ display: 'flex', justifyContent: 'center' }}>
+                Welcome to Car House
+              </Typography>
+            )}
           </div>
-
           <div style={{ display: 'flex', alignItems: 'center' }}>
             <TextField
               label="Message"
@@ -262,6 +289,7 @@ const ChatSupport = () => {
               fullWidth
             />
             <Button
+              disabled={user && chat ? false : true}
               variant="contained"
               onClick={() => handleSendMessage(event)}
               sx={{
@@ -272,6 +300,7 @@ const ChatSupport = () => {
               <SendIcon />
             </Button>
             <Button
+              disabled={user && chat ? false : true}
               variant="contained"
               onClick={retrieveChatMessages}
               sx={{
