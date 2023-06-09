@@ -180,10 +180,19 @@ const ChatSupport = () => {
     handleData()
     // Retrieve messages initially
     retrieveChatMessages()
-    // Retrieve messages at regular intervals (every 1 seconds in this example)
-    const interval = setInterval(retrieveChatMessages, 1000)
-    // Clean up the interval when the component unmounts
-    return () => clearInterval(interval)
+
+    // Define a function to retrieve chat messages
+    const fetchChatMessages = async () => {
+      await retrieveChatMessages()
+      // Call the function again after 1 second
+      setTimeout(fetchChatMessages, 1000)
+    }
+
+    // Start fetching chat messages
+    const fetchMessagesInterval = setTimeout(fetchChatMessages, 1000)
+
+    // Clean up the interval when the component unmounts or when the dialog is closed
+    return () => clearTimeout(fetchMessagesInterval)
   }, [])
 
   return (
