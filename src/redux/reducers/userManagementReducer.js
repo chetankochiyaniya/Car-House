@@ -1,7 +1,7 @@
 import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
 
 const initialState = {
-  users: [{ values: { name: 'admin', email: 'admin@gmail.com', password: 'admin' } }],
+  users: [{ values: { id: 999999, name: 'admin', email: 'admin@gmail.com', password: 'admin' } }],
   modelOpen: false,
   loggedInUser: null,
   adminName: 'admin',

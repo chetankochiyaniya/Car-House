@@ -19,7 +19,7 @@ import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave'
 import GroupIcon from '@mui/icons-material/Group'
 import ForumIcon from '@mui/icons-material/Forum'
 import { useDispatch, useSelector } from 'react-redux'
-import { Avatar, Button, Menu, MenuItem, Tooltip } from '@mui/material'
+import { Avatar, Button, Menu, MenuItem, Tooltip, Container } from '@mui/material'
 import { UserSignOut } from '../../redux/actions'
 import { toast } from 'react-toastify'
 import KeyboardReturnIcon from '@mui/icons-material/KeyboardReturn'
@@ -210,8 +210,8 @@ function SideBar(props) {
               {drawer}
             </Drawer>
           </Box>
-          <Box component="main" sx={{ flexGrow: 1, p: 3, mt: 5 }}>
-            {props.children}
+          <Box component="main" sx={{ flexGrow: 1, p: 3, marginTop: '100px' }}>
+            <Container maxWidth="xl">{props.children}</Container>
           </Box>
         </Box>
       </>

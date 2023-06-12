@@ -5,6 +5,9 @@ import TextField from './TextField.js'
 import { useDispatch, useSelector } from 'react-redux'
 import { UserSignUp, HandleModel } from '../../../redux/actions'
 import { toast } from 'react-toastify'
+import { customAlphabet } from 'nanoid'
+
+const nanoid = customAlphabet('1234567890', 6)
 
 export default function SignUp() {
   const validate = Yup.object({
@@ -58,6 +61,7 @@ export default function SignUp() {
           } else {
             dispatch(
               UserSignUp({
+                id: nanoid(),
                 name: fullName,
                 email: email,
                 password: password

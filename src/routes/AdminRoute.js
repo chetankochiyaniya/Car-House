@@ -9,7 +9,15 @@ function AdminRoute({ component: Component }) {
     <Suspense
       fallback={
         <>
-          <CircularProgress color="error" />
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '100vh'
+            }}>
+            <CircularProgress color="error" />
+          </div>
         </>
       }>
       <Component />
