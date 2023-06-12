@@ -178,13 +178,13 @@ const ChatSupport = () => {
       }
     }
   }
-  // useEffect(() => {
-  //   handleData()
+  useEffect(() => {
+    handleData()
 
-  //   const interval = setInterval(retrieveChatMessages, 1000)
-  //   // Clean up the interval when the component unmounts
-  //   return () => clearInterval(interval)
-  // }, [])
+    const interval = setInterval(retrieveChatMessages, 1000)
+    // Clean up the interval when the component unmounts
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <>
