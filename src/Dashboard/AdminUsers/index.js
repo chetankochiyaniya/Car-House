@@ -11,10 +11,10 @@ import { useSelector } from 'react-redux'
 import './index.css'
 
 const columns = [
-  { field: 'id', headerName: 'Id' },
-  { field: 'name', headerName: 'Name' },
-  { field: 'email', headerName: 'Email' },
-  { field: 'password', headerName: 'Password' }
+  { field: 'id', headerName: 'Id', flex: 1 },
+  { field: 'name', headerName: 'Name', flex: 1 },
+  { field: 'email', headerName: 'Email', flex: 1 },
+  { field: 'password', headerName: 'Password', flex: 1 }
 ]
 
 export default function AdminUsers() {
@@ -45,7 +45,13 @@ export default function AdminUsers() {
           }}>
           web users
         </Typography>
-        <div style={{ height: 400, width: '90%', margin: 'auto' }}>
+        <div
+          style={{
+            height: 400,
+            width: '90%',
+            margin: 'auto',
+            maxWidth: '100%'
+          }}>
           <DataGrid
             sx={{
               '.MuiDataGrid-iconButtonContainer': {
