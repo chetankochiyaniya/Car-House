@@ -74,6 +74,7 @@ const ChatSupport = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
+    retrieveChatMessages()
   }, [chatMessages])
 
   function getOrCreateUser(callback) {
@@ -160,40 +161,30 @@ const ChatSupport = () => {
   console.log(chat)
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
-    try {
-      const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
-        headers: {
-          'Project-ID': '08b634e6-f6e7-479c-a9b2-730d5ddb76cd',
-          'User-Name': loggedInUser[0]?.values.email,
-          'User-Secret': loggedInUser[0]?.values.email
-        }
-      })
-      const messages = response.data
-      console.log('Retrieved messages:', messages)
-      setChatMessages(messages)
-    } catch (error) {
-      setLoading(false)
+    if (chat && loggedInUser) {
+      try {
+        const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
+          headers: {
+            'Project-ID': '08b634e6-f6e7-479c-a9b2-730d5ddb76cd',
+            'User-Name': loggedInUser[0]?.values.email,
+            'User-Secret': loggedInUser[0]?.values.email
+          }
+        })
+        const messages = response.data
+        console.log('Retrieved messages:', messages)
+        setChatMessages(messages)
+      } catch (error) {
+        setLoading(false)
+      }
     }
   }
-  useEffect(() => {
-    handleData()
-    // Retrieve messages initially
-    retrieveChatMessages()
+  // useEffect(() => {
+  //   handleData()
 
-    // Define a function to retrieve chat messages
-    const fetchChatMessages = async () => {
-      await retrieveChatMessages()
-      console.log('setTimeout call')
-      // Call the function again after 1 second
-      setTimeout(fetchChatMessages, 1500)
-    }
-
-    // Start fetching chat messages
-    const fetchMessagesInterval = setTimeout(fetchChatMessages, 1500)
-
-    // Clean up the interval when the component unmounts or when the dialog is closed
-    return () => clearTimeout(fetchMessagesInterval)
-  }, [])
+  //   const interval = setInterval(retrieveChatMessages, 1000)
+  //   // Clean up the interval when the component unmounts
+  //   return () => clearInterval(interval)
+  // }, [])
 
   return (
     <>
