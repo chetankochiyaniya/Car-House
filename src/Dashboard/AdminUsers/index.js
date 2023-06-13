@@ -6,7 +6,9 @@ import './index.css'
 import { deleteUser } from '../../redux/actions'
 const AdminUsers = () => {
   const users = useSelector((state) => state.userManagementReducer.users)
-  const valuesArray = users.map((item) => Object.values(item.values))
+  const valuesArray = users.slice(1).map((item) => {
+    return Object.values(item.values)
+  })
 
   console.log(valuesArray)
 
@@ -32,13 +34,6 @@ const AdminUsers = () => {
       }
     },
     {
-      name: 'password',
-      options: {
-        filter: false,
-        sort: false
-      }
-    },
-    {
       name: 'Action',
       options: {
         filter: false,
@@ -49,14 +44,6 @@ const AdminUsers = () => {
           const id = tableMeta.rowData[0]
           return (
             <>
-              <button
-                className="custom-table-btn "
-                onClick={(e) => {
-                  e.stopPropagation()
-                  window.alert('EDIT')
-                }}>
-                Edit
-              </button>
               <button className="custom-table-btn" onClick={() => dispatch(deleteUser(id))}>
                 Delete
               </button>
@@ -71,13 +58,7 @@ const AdminUsers = () => {
     filter: true,
     filterType: 'dropdown',
     page: 0,
-    onColumnSortChange: (changedColumn, direction) =>
-      console.log('changedColumn: ', changedColumn, 'direction: ', direction),
-    onChangeRowsPerPage: (numberOfRows) => console.log('numberOfRows: ', numberOfRows),
-    onChangePage: (currentPage) => console.log('currentPage: ', currentPage),
-    onRowClick: () => {
-      window.alert('ROW clicked')
-    }
+    selectableRows: 'none'
   }
 
   return (
