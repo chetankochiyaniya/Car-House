@@ -1,77 +1,95 @@
-import * as React from 'react'
-import {
-  GridToolbarContainer,
-  GridToolbarFilterButton,
-  GridToolbarExport,
-  DataGrid
-} from '@mui/x-data-grid'
+import React from 'react'
+import MUIDataTable from 'mui-datatables'
 import SideBar from '../SideBar'
-import { Typography } from '@mui/material'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import './index.css'
-
-const columns = [
-  { field: 'id', headerName: 'Id', flex: 1 },
-  { field: 'name', headerName: 'Name', flex: 1 },
-  { field: 'email', headerName: 'Email', flex: 1 },
-  { field: 'password', headerName: 'Password', flex: 1 }
-]
-
-export default function AdminUsers() {
+import { deleteUser } from '../../redux/actions'
+const AdminUsers = () => {
   const users = useSelector((state) => state.userManagementReducer.users)
+  const valuesArray = users.map((item) => Object.values(item.values))
 
-  const data = users.map((value) => {
-    return value.values
-  })
+  console.log(valuesArray)
 
-  function CustomToolbar() {
-    return (
-      <GridToolbarContainer>
-        <GridToolbarFilterButton />
-        <GridToolbarExport />
-      </GridToolbarContainer>
-    )
+  const dispatch = useDispatch()
+
+  const columns = [
+    {
+      name: 'Id',
+      options: {
+        filter: true
+      }
+    },
+    {
+      name: 'Name',
+      options: {
+        filter: true
+      }
+    },
+    {
+      name: 'Email',
+      options: {
+        filter: false
+      }
+    },
+    {
+      name: 'password',
+      options: {
+        filter: false,
+        sort: false
+      }
+    },
+    {
+      name: 'Action',
+      options: {
+        filter: false,
+        sort: false,
+        empty: true,
+        customBodyRender: (value, tableMeta) => {
+          console.log(value, tableMeta)
+          const id = tableMeta.rowData[0]
+          return (
+            <>
+              <button
+                className="custom-table-btn "
+                onClick={(e) => {
+                  e.stopPropagation()
+                  window.alert('EDIT')
+                }}>
+                Edit
+              </button>
+              <button className="custom-table-btn" onClick={() => dispatch(deleteUser(id))}>
+                Delete
+              </button>
+            </>
+          )
+        }
+      }
+    }
+  ]
+
+  const options = {
+    filter: true,
+    filterType: 'dropdown',
+    page: 0,
+    onColumnSortChange: (changedColumn, direction) =>
+      console.log('changedColumn: ', changedColumn, 'direction: ', direction),
+    onChangeRowsPerPage: (numberOfRows) => console.log('numberOfRows: ', numberOfRows),
+    onChangePage: (currentPage) => console.log('currentPage: ', currentPage),
+    onRowClick: () => {
+      window.alert('ROW clicked')
+    }
   }
 
   return (
     <SideBar>
-      <>
-        <Typography
-          sx={{
-            display: 'flex',
-            justifyContent: 'center',
-            fontSize: '30px',
-            marginBottom: 2
-          }}>
-          web users
-        </Typography>
-        <div
-          style={{
-            height: 400,
-            width: '90%',
-            margin: 'auto',
-            maxWidth: '100%'
-          }}>
-          <DataGrid
-            sx={{
-              '.MuiDataGrid-iconButtonContainer': {
-                visibility: 'visible'
-              },
-              '.MuiDataGrid-sortIcon': {
-                opacity: 'inherit !important'
-              }
-            }}
-            rows={data}
-            columns={columns}
-            components={{
-              Toolbar: CustomToolbar
-            }}
-            pagination
-            pageSize={5}
-            autoHeight
-          />
-        </div>
-      </>
+      <MUIDataTable
+        title={'Web Users List'}
+        data={valuesArray}
+        columns={columns}
+        options={options}
+      />
     </SideBar>
   )
 }
+
+export default AdminUsers

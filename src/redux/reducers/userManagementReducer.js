@@ -1,4 +1,4 @@
-import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER } from '../constant'
+import { ADD_USER, SIGNOUT, MODEL, SIGNIN_USER, DELETE_USER } from '../constant'
 
 const initialState = {
   users: [{ values: { id: 999999, name: 'admin', email: 'admin@gmail.com', password: 'admin' } }],
@@ -13,6 +13,8 @@ const initialState = {
 const userManagementReducer = (state = initialState, action) => {
   const { type, payload } = action
   let data
+  const uid = action.payload
+  const updatedUsers = state.users.filter((user) => user.values.id !== uid)
   switch (type) {
     case ADD_USER:
       return {
@@ -49,6 +51,11 @@ const userManagementReducer = (state = initialState, action) => {
       return {
         ...state,
         modelOpen: payload
+      }
+    case DELETE_USER:
+      return {
+        ...state,
+        users: updatedUsers
       }
     default:
       return state
