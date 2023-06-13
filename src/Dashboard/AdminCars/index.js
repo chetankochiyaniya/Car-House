@@ -40,13 +40,15 @@ const AdminCars = () => {
       name: 'Original Price',
       options: {
         filter: true,
-        sort: true
+        sort: true,
+        setCellProps: () => ({ style: { width: '150px' } })
       }
     },
     {
       name: 'Discounted Price',
       options: {
-        filter: true
+        filter: true,
+        setCellProps: () => ({ style: { width: '200px' } })
       }
     },
     {
@@ -85,7 +87,9 @@ const AdminCars = () => {
     filter: true,
     filterType: 'dropdown',
     page: 0,
-    selectableRows: 'none'
+    selectableRows: 'none',
+    rowsPerPageOptions: [5, 10, 20], // Add 5 as an option
+    rowsPerPage: 5
   }
 
   return (
