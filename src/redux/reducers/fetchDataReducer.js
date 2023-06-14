@@ -871,6 +871,7 @@ const initialState = {
 }
 
 const fetchDataReducer = (state = initialState, action) => {
+  let filterdata
   switch (action.type) {
     case FETCH_DATA_REQUEST:
       return {
@@ -891,9 +892,10 @@ const fetchDataReducer = (state = initialState, action) => {
         error: action.payload
       }
     case EDIT_CAR_MODEL:
+      filterdata = state.data.filter((car) => car.car_id == action.payload)
       return {
         ...state,
-        carEdit: action.payload
+        carEdit: filterdata
       }
     case ADD_CAR:
       return {

@@ -3,7 +3,7 @@ import MUIDataTable from 'mui-datatables'
 import SideBar from '../SideBar'
 import { useDispatch, useSelector } from 'react-redux'
 import './index.css'
-import { getCarDetails } from '../../redux/actions'
+import { getCarDetails, handleCarEditModel } from '../../redux/actions'
 import { CircularProgress } from '@mui/material'
 import CarEdit from './CarEdit'
 import { Button } from '@mui/material'
@@ -84,11 +84,17 @@ const AdminCars = () => {
         filter: false,
         sort: false,
         empty: true,
-        customBodyRender: () => {
+        customBodyRender: (value, tableMeta) => {
+          console.log(value, tableMeta)
+          const id = tableMeta.rowData[0]
           return (
             <>
               <div className="d-flex">
-                <button className="custom-table-btn" onClick={() => setModel(!model)}>
+                <button
+                  className="custom-table-btn"
+                  onClick={() => {
+                    dispatch(handleCarEditModel(id)), setModel(!model)
+                  }}>
                   Edit
                 </button>
                 <button className="custom-table-btn">Delete</button>
