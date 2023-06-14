@@ -5,7 +5,9 @@ import {
   SIGNIN_USER,
   ADD_TO_WISHLIST,
   REMOVE_FROM_WISHLIST,
-  DELETE_USER
+  DELETE_USER,
+  EDIT_CAR_MODEL,
+  ADD_CAR
 } from '../constant'
 import carDetailsData from '../../data/carDetails.json'
 
@@ -82,4 +84,14 @@ export const removeFromWishlist = (userId, carId) => ({
 export const deleteUser = (userId) => ({
   type: DELETE_USER,
   payload: userId
+})
+
+export const handleCarEditModel = (value) => ({
+  type: EDIT_CAR_MODEL,
+  payload: value
+})
+
+export const addCar = (value) => ({
+  type: ADD_CAR,
+  payload: value
 })
