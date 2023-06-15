@@ -74,6 +74,7 @@ const ChatSupport = () => {
     if (chatContainerRef.current) {
       chatContainerRef.current.scrollTop = chatContainerRef.current.scrollHeight
     }
+    retrieveChatMessages()
   }, [chatMessages])
 
   function getOrCreateUser(callback) {
@@ -86,7 +87,7 @@ const ChatSupport = () => {
             email: loggedInUser[0]?.values.email,
             secret: loggedInUser[0]?.values.email
           },
-          { headers: { 'Private-Key': process.env.REACT_APP_PRIVATE_KEY } }
+          { headers: { 'Private-Key': '88d4a9a2-aa78-4b4c-bb87-32860500f2d0' } }
         )
         .then((r) => callback(r.data))
         .catch(() => showErrorToast('API Error : Create user error'))
@@ -99,7 +100,7 @@ const ChatSupport = () => {
         { usernames: [loggedInUser[0]?.values.email, 'Chetan_Kochiyaniya'], is_direct_chat: true },
         {
           headers: {
-            'Project-ID': process.env.REACT_APP_PROJECT_ID,
+            'Project-ID': '08b634e6-f6e7-479c-a9b2-730d5ddb76cd',
             'User-Name': loggedInUser[0]?.values.email,
             'User-Secret': loggedInUser[0]?.values.email
           }
@@ -115,11 +116,9 @@ const ChatSupport = () => {
   function handleData() {
     getOrCreateUser((user) => {
       setUser(user)
-      console.log('user', user)
       getOrCreateChat((chat) => {
         setChat(chat)
         retrieveChatMessages()
-        console.log('chat', chat)
       })
     })
   }
@@ -144,8 +143,7 @@ const ChatSupport = () => {
       }
 
       axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data))
+        .then(function () {
           setLoading(false)
         })
         .catch(function () {
@@ -157,30 +155,28 @@ const ChatSupport = () => {
       setLoading(false)
     }
   }
-  console.log(chat)
+
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
-    try {
-      const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
-        headers: {
-          'Project-ID': process.env.REACT_APP_PROJECT_ID,
-          'User-Name': loggedInUser[0]?.values.email,
-          'User-Secret': loggedInUser[0]?.values.email
-        }
-      })
-      const messages = response.data
-      console.log('Retrieved messages:', messages)
-      setChatMessages(messages)
-    } catch (error) {
-      setLoading(false)
+    if (chat && loggedInUser) {
+      try {
+        const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
+          headers: {
+            'Project-ID': '08b634e6-f6e7-479c-a9b2-730d5ddb76cd',
+            'User-Name': loggedInUser[0]?.values.email,
+            'User-Secret': loggedInUser[0]?.values.email
+          }
+        })
+        const messages = response.data
+        setChatMessages(messages)
+      } catch (error) {
+        setLoading(false)
+      }
     }
   }
-
   useEffect(() => {
     handleData()
-    // Retrieve messages initially
-    retrieveChatMessages()
-    // Retrieve messages at regular intervals (every 1 seconds in this example)
+
     const interval = setInterval(retrieveChatMessages, 1000)
     // Clean up the interval when the component unmounts
     return () => clearInterval(interval)

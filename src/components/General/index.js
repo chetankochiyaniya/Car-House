@@ -2,9 +2,11 @@ import React from 'react'
 import { useLocation } from 'react-router-dom'
 import Navbar from './Navbar'
 import Chat from './ChatSupport'
+import { useSelector } from 'react-redux'
 
 function General() {
   const path = useLocation()
+  const { loggedInUser } = useSelector((state) => state.userManagementReducer)
   return (
     <>
       {' '}
@@ -13,7 +15,7 @@ function General() {
       ) : (
         <>
           <Navbar />
-          <Chat />
+          {loggedInUser && loggedInUser[0]?.values.email === 'admin@gmail.com' ? '' : <Chat />}
         </>
       )}
     </>

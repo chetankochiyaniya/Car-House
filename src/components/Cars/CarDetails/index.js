@@ -33,7 +33,6 @@ const CarDetails = () => {
   }
 
   const cardata = data?.filter((item) => item.car_id === id)
-  console.log(cardata[0])
 
   return (
     <>

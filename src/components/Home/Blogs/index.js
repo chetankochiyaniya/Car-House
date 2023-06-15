@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Box, Container, Typography, Link, Button } from '@mui/material'
+import { Box, Container, Typography, Button } from '@mui/material'
+import { Link } from 'react-router-dom'
 import './index.css'
 
 const Blogs = () => {
@@ -57,7 +58,7 @@ const Blogs = () => {
             <Box sx={{ textAlign: 'center', mt: 3 }}>
               <Button
                 component={Link}
-                to="/blogs"
+                to="https://feedly.com/i/subscription/feed%2Fhttp%3A%2F%2Fwww.autoblog.com%2Frss.xml"
                 variant="contained"
                 fullWidth
                 sx={{
@@ -92,7 +93,7 @@ const Blogs = () => {
                 <Box sx={{ mt: 4 }}>
                   <Button
                     component={Link}
-                    to="/blog-details"
+                    to="https://feedly.com/i/subscription/feed%2Fhttp%3A%2F%2Fwww.autoblog.com%2Frss.xml"
                     variant="contained"
                     sx={{
                       backgroundColor: 'var(--red-color)',
@@ -123,7 +124,7 @@ const Blogs = () => {
                 <Box sx={{ mt: 4 }}>
                   <Button
                     component={Link}
-                    to="/blog-details"
+                    to="https://feedly.com/i/subscription/feed%2Fhttp%3A%2F%2Fwww.autoblog.com%2Frss.xml"
                     variant="contained"
                     sx={{
                       backgroundColor: 'var(--red-color)',
@@ -153,7 +154,7 @@ const Blogs = () => {
                 <Box sx={{ mt: 4 }}>
                   <Button
                     component={Link}
-                    to="/blog-details"
+                    to="https://feedly.com/i/subscription/feed%2Fhttp%3A%2F%2Fwww.autoblog.com%2Frss.xml"
                     variant="contained"
                     sx={{
                       backgroundColor: 'var(--red-color)',

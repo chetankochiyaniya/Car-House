@@ -12,7 +12,9 @@ import WishList from './components/Wishlist'
 import PrivateRoute from './routes/PrivateRoute'
 import General from './components/General'
 
-const AdminDashbord = lazy(() => import('./Dashboard'))
+const AdminUser = lazy(() => import('./Dashboard/AdminUsers'))
+const AdminCars = lazy(() => import('./Dashboard/AdminCars'))
+const AdminChatSupport = lazy(() => import('./Dashboard/AdminChatSupport'))
 
 function App() {
   return (
@@ -38,8 +40,10 @@ function App() {
         <Route path="/contact" element={<Contact />} />
         <Route path="/team" element={<Team />} />
         <Route path="*" element={<Navigate to="/" />} />
-        <Route path="/dashboard" element={<AdminRoute component={AdminDashbord} />} />
         <Route path="/wishlist" element={<PrivateRoute component={WishList} />} />
+        <Route path="/dashboard/live-chat" element={<AdminRoute component={AdminChatSupport} />} />
+        <Route path="/dashboard/users" element={<AdminRoute component={AdminUser} />} />
+        <Route path="/dashboard/cars" element={<AdminRoute component={AdminCars} />} />
       </Routes>
     </>
   )
