@@ -1,7 +1,5 @@
 .custom-table-btn {
   border: 0;
-  background-color: var(--red-color);
-  color: var(--white-color);
   border-radius: 11px;
   padding: 5px;
   min-width: 55px;

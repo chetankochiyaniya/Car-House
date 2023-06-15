@@ -117,7 +117,7 @@ function Navbar() {
                   display: { xs: 'block', md: 'none' }
                 }}>
                 {adminRole ? (
-                  <MenuItem onClick={() => handleCloseNavMenu('/dashboard')}>
+                  <MenuItem onClick={() => handleCloseNavMenu('/dashboard/cars')}>
                     <Typography textAlign="center" sx={{ color: 'var(--red-color)' }}>
                       Dashboard
                     </Typography>
@@ -197,7 +197,7 @@ function Navbar() {
               </Button>
               {adminRole ? (
                 <Button
-                  onClick={() => navigate('/dashboard')}
+                  onClick={() => navigate('/dashboard/cars')}
                   sx={{
                     my: 2,
                     color: 'var(--red-color)',

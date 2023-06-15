@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import MUIDataTable from 'mui-datatables'
 import SideBar from '../SideBar'
 import { useDispatch, useSelector } from 'react-redux'
@@ -9,8 +9,6 @@ const AdminUsers = () => {
   const valuesArray = users.slice(1).map((item) => {
     return Object.values(item.values)
   })
-
-  console.log(valuesArray)
 
   const dispatch = useDispatch()
 
@@ -40,7 +38,6 @@ const AdminUsers = () => {
         sort: false,
         empty: true,
         customBodyRender: (value, tableMeta) => {
-          console.log(value, tableMeta)
           const id = tableMeta.rowData[0]
           return (
             <>
@@ -54,11 +51,19 @@ const AdminUsers = () => {
     }
   ]
 
+  const [currentPage, setCurrentPage] = useState(0)
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
+
   const options = {
     filter: true,
     filterType: 'dropdown',
-    page: 0,
-    selectableRows: 'none'
+    page: currentPage,
+    selectableRows: 'none',
+    rowsPerPageOptions: [5, 10, 20],
+    rowsPerPage: 5,
+    onChangePage: (page) => handlePageChange(page)
   }
 
   return (

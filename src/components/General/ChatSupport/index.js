@@ -116,11 +116,9 @@ const ChatSupport = () => {
   function handleData() {
     getOrCreateUser((user) => {
       setUser(user)
-      console.log('user', user)
       getOrCreateChat((chat) => {
         setChat(chat)
         retrieveChatMessages()
-        console.log('chat', chat)
       })
     })
   }
@@ -145,8 +143,7 @@ const ChatSupport = () => {
       }
 
       axios(config)
-        .then(function (response) {
-          console.log(JSON.stringify(response.data))
+        .then(function () {
           setLoading(false)
         })
         .catch(function () {
@@ -158,7 +155,7 @@ const ChatSupport = () => {
       setLoading(false)
     }
   }
-  console.log(chat)
+
   // Function to retrieve messages
   const retrieveChatMessages = async () => {
     if (chat && loggedInUser) {
@@ -171,7 +168,6 @@ const ChatSupport = () => {
           }
         })
         const messages = response.data
-        console.log('Retrieved messages:', messages)
         setChatMessages(messages)
       } catch (error) {
         setLoading(false)

@@ -64,27 +64,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4426 mm"
+        "value": 4426
       },
       {
         "label": "Width",
-        "value": "1940 mm"
+        "value": 1940
       },
       {
         "label": "Height",
-        "value": "1240 mm"
+        "value": 1240
       },
       {
         "label": "Wheelbase",
-        "value": "2650 mm"
+        "value": 2650
       },
       {
         "label": "Curb Weight",
-        "value": "1615 kg"
+        "value": 1615
       },
       {
         "label": "Trunk Capacity",
-        "value": "112 liters"
+        "value": 112
       }
     ],
     "tabFour": [
@@ -158,27 +158,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4482 mm"
+        "value": 4482
       },
       {
         "label": "Width",
-        "value": "1923 mm"
+        "value": 1923
       },
       {
         "label": "Height",
-        "value": "1311 mm"
+        "value": 1311
       },
       {
         "label": "Wheelbase",
-        "value": "2622 mm"
+        "value": 2622
       },
       {
         "label": "Curb Weight",
-        "value": "1585-1715 kg"
+        "value": 1715
       },
       {
         "label": "Trunk Capacity",
-        "value": "310 liters"
+        "value": 310
       }
     ],
     "tabFour": [
@@ -252,27 +252,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4970 mm"
+        "value": 4970
       },
       {
         "label": "Width",
-        "value": "1964 mm"
+        "value": 1964
       },
       {
         "label": "Height",
-        "value": "1445 mm"
+        "value": 1445
       },
       {
         "label": "Wheelbase",
-        "value": "2960 mm"
+        "value": 2960
       },
       {
         "label": "Curb Weight",
-        "value": "1999-2205 kg"
+        "value": 2205
       },
       {
         "label": "Trunk Capacity",
-        "value": "804 liters"
+        "value": 804
       }
     ],
     "tabFour": [
@@ -348,27 +348,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4544 mm"
+        "value": 4544
       },
       {
         "label": "Width",
-        "value": "2038 mm"
+        "value": 2038
       },
       {
         "label": "Height",
-        "value": "1212 mm"
+        "value": 1212
       },
       {
         "label": "Wheelbase",
-        "value": "2711 mm"
+        "value": 2711
       },
       {
         "label": "Curb Weight",
-        "value": "1995 kg"
+        "value": 1995
       },
       {
         "label": "Trunk Capacity",
-        "value": "44 liters"
+        "value": 44
       }
     ],
     "tabFour": [
@@ -387,8 +387,8 @@
     },
     "description": "The Ferrari LaFerrari is a high-performance hybrid sports car.",
     "images": [
-      "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg/640px-LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg",
-      "https://upload.wikimedia.org/wikipedia/commons/c/c0/Ferrari_LaFerrari_rear.jpg"
+      "https://upload.wikimedia.org/wikipedia/cons/thumb/e/e5/LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg/640px-LaFerrari_in_Beverly_Hills_%2814563979888%29.jpg",
+      "https://upload.wikimedia.org/wikipedia/cons/c/c0/Ferrari_LaFerrari_rear.jpg"
     ],
     "tabOne": [
       {
@@ -443,27 +443,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4702 mm"
+        "value": 4702
       },
       {
         "label": "Width",
-        "value": "1992 mm"
+        "value": 1992
       },
       {
         "label": "Height",
-        "value": "1116 mm"
+        "value": 1116
       },
       {
         "label": "Wheelbase",
-        "value": "2650 mm"
+        "value": 2650
       },
       {
         "label": "Curb Weight",
-        "value": "1255 kg"
+        "value": 1255
       },
       {
         "label": "Trunk Capacity",
-        "value": "28 liters"
+        "value": 28
       }
     ],
     "tabFour": [
@@ -538,27 +538,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4841 mm"
+        "value": 4841
       },
       {
         "label": "Width",
-        "value": "2030 mm"
+        "value": 2030
       },
       {
         "label": "Height",
-        "value": "1136 mm"
+        "value": 1136
       },
       {
         "label": "Wheelbase",
-        "value": "2700 mm"
+        "value": 2700
       },
       {
         "label": "Curb Weight",
-        "value": "1575 kg"
+        "value": 1575
       },
       {
         "label": "Trunk Capacity",
-        "value": "100 liters"
+        "value": 100
       }
     ],
     "tabFour": [
@@ -631,27 +631,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "4499 mm"
+        "value": 4499
       },
       {
         "label": "Width",
-        "value": "1852 mm"
+        "value": 1852
       },
       {
         "label": "Height",
-        "value": "1300 mm"
+        "value": 1300
       },
       {
         "label": "Wheelbase",
-        "value": "2450 mm"
+        "value": 2450
       },
       {
         "label": "Curb Weight",
-        "value": "1450 kg"
+        "value": 1450
       },
       {
         "label": "Trunk Capacity",
-        "value": "132 liters"
+        "value": 132
       }
     ],
     "tabFour": [
@@ -726,27 +726,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "6092 mm"
+        "value": 6092
       },
       {
         "label": "Width",
-        "value": "1990 mm"
+        "value": 1990
       },
       {
         "label": "Height",
-        "value": "1656 mm"
+        "value": 1656
       },
       {
         "label": "Wheelbase",
-        "value": "3772 mm"
+        "value": 3772
       },
       {
         "label": "Curb Weight",
-        "value": "2670 kg"
+        "value": 2670
       },
       {
         "label": "Trunk Capacity",
-        "value": "548 liters"
+        "value": 548
       }
     ],
     "tabFour": [
@@ -820,27 +820,27 @@
     "tabThree": [
       {
         "label": "Length",
-        "value": "5255 mm"
+        "value": 5255
       },
       {
         "label": "Width",
-        "value": "1954 mm"
+        "value": 1954
       },
       {
         "label": "Height",
-        "value": "1496 mm"
+        "value": 1496
       },
       {
         "label": "Wheelbase",
-        "value": "3216 mm"
+        "value": 3216
       },
       {
         "label": "Curb Weight",
-        "value": "1950-2300 kg"
+        "value": 2300
       },
       {
         "label": "Trunk Capacity",
-        "value": "510 liters"
+        "value": 510
       }
     ],
     "tabFour": [

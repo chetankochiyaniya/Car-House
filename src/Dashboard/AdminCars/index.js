@@ -3,7 +3,7 @@ import MUIDataTable from 'mui-datatables'
 import SideBar from '../SideBar'
 import { useDispatch, useSelector } from 'react-redux'
 import './index.css'
-import { getCarDetails, handleCarEditModel } from '../../redux/actions'
+import { deleteCar, getCarDetails, handleCarEditModel } from '../../redux/actions'
 import { CircularProgress } from '@mui/material'
 import CarEdit from './CarEdit'
 import { Button } from '@mui/material'
@@ -85,19 +85,26 @@ const AdminCars = () => {
         sort: false,
         empty: true,
         customBodyRender: (value, tableMeta) => {
-          console.log(value, tableMeta)
           const id = tableMeta.rowData[0]
           return (
             <>
               <div className="d-flex">
                 <button
                   className="custom-table-btn"
+                  style={{ backgroundColor: '#1976d2', color: 'var(--white-color)' }}
                   onClick={() => {
                     dispatch(handleCarEditModel(id)), setModel(!model)
                   }}>
                   Edit
                 </button>
-                <button className="custom-table-btn">Delete</button>
+                <button
+                  className="custom-table-btn"
+                  style={{ backgroundColor: 'var(--red-color)', color: 'var(--white-color)' }}
+                  onClick={() => {
+                    dispatch(deleteCar(id))
+                  }}>
+                  Delete
+                </button>
               </div>
             </>
           )
@@ -105,14 +112,19 @@ const AdminCars = () => {
       }
     }
   ]
+  const [currentPage, setCurrentPage] = useState(0)
+  const handlePageChange = (page) => {
+    setCurrentPage(page)
+  }
 
   const options = {
     filter: true,
     filterType: 'dropdown',
-    page: 0,
+    page: currentPage,
     selectableRows: 'none',
     rowsPerPageOptions: [5, 10, 20],
-    rowsPerPage: 5
+    rowsPerPage: 5,
+    onChangePage: (page) => handlePageChange(page)
   }
 
   return (

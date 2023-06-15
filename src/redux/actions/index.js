@@ -7,7 +7,9 @@ import {
   REMOVE_FROM_WISHLIST,
   DELETE_USER,
   EDIT_CAR_MODEL,
-  ADD_CAR
+  ADD_CAR,
+  UPDATE_CAR,
+  DELETE_CAR
 } from '../constant'
 import carDetailsData from '../../data/carDetails.json'
 
@@ -95,3 +97,18 @@ export const addCar = (value) => ({
   type: ADD_CAR,
   payload: value
 })
+
+export const updateCar = (carId, updatedData) => {
+  return {
+    type: UPDATE_CAR,
+    carId,
+    updatedData
+  }
+}
+
+export const deleteCar = (carId) => {
+  return {
+    type: DELETE_CAR,
+    carId
+  }
+}

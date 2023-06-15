@@ -150,7 +150,6 @@ export default function AddCar({ onClose }) {
       !extraInfo['Curb Weight'] ||
       !extraInfo['Trunk Capacity']
     ) {
-      setOpen(false)
       toast.error('Please fill in all the fields. !', {
         position: 'top-center',
         autoClose: 2000,
@@ -262,7 +261,10 @@ export default function AddCar({ onClose }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
-          <Box sx={{ width: '100%' }}>
+          <Typography variant="h6" sx={{ display: 'flex', justifyContent: 'center' }}>
+            Add New Car
+          </Typography>
+          <Box sx={{ width: '100%', marginTop: 2 }}>
             <Stepper activeStep={activeStep} alternativeLabel={isSmallScreen}>
               {steps.map((label, index) => {
                 const stepProps = {}
@@ -284,6 +286,13 @@ export default function AddCar({ onClose }) {
                   All steps completed - you&apos;re finished
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                  <Button
+                    color="inherit"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: 1 }}>
+                    Back
+                  </Button>
                   <Box sx={{ flex: '1 1 auto' }} />
                   <Button onClick={handleSubmit}>Submit</Button>
                 </Box>

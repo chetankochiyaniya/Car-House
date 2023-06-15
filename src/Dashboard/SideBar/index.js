@@ -14,7 +14,7 @@ import ListItemText from '@mui/material/ListItemText'
 import MenuIcon from '@mui/icons-material/Menu'
 import Toolbar from '@mui/material/Toolbar'
 import Typography from '@mui/material/Typography'
-import HomeIcon from '@mui/icons-material/Home'
+
 import TimeToLeaveIcon from '@mui/icons-material/TimeToLeave'
 import GroupIcon from '@mui/icons-material/Group'
 import ForumIcon from '@mui/icons-material/Forum'
@@ -83,7 +83,6 @@ function SideBar(props) {
       </Toolbar>
       <Divider />
       <List>
-        <SidebarItem to="/dashboard" icon={<HomeIcon />} primary="Home" />
         <SidebarItem to="/dashboard/cars" icon={<TimeToLeaveIcon />} primary="Cars" />
         <SidebarItem to="/dashboard/users" icon={<GroupIcon />} primary="Users" />
         <SidebarItem to="/dashboard/live-chat" icon={<ForumIcon />} primary="Live Chat" />

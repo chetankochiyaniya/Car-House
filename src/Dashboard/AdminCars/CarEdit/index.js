@@ -12,27 +12,22 @@ import { Select } from '@mui/material'
 import { FormControl } from '@mui/material'
 import { InputLabel } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCar } from '../../../redux/actions'
+import { updateCar } from '../../../redux/actions'
 import { toast } from 'react-toastify'
 
 const steps = ['General', 'Specs', 'Description', 'Extra']
 
-import { customAlphabet } from 'nanoid'
-
-const nanoid = customAlphabet('1234567890', 6)
-
-export default function AddCar({ onClose }) {
+export default function CarEdit({ onClose }) {
   const { carEdit } = useSelector((state) => state.fetchDataReducer)
-  console.log('car edit', carEdit)
   const [activeStep, setActiveStep] = useState(0)
   const [skipped, setSkipped] = useState(new Set())
   const [open, setOpen] = useState(true)
   const [carInfo, setCarInfo] = useState({
-    carName: '',
-    originalPrice: '',
-    discountedPrice: '',
-    description: '',
-    images: ['', '', '']
+    carName: carEdit[0].carName,
+    originalPrice: carEdit[0].price.originalPrice,
+    discountedPrice: carEdit[0].price.discountedPrice,
+    description: carEdit[0].description,
+    images: [carEdit[0].images[0], carEdit[0].images[1], carEdit[0].images[2]]
   })
   const handleChange = (e) => {
     const { name, value } = e.target
@@ -49,17 +44,17 @@ export default function AddCar({ onClose }) {
     })
   }
   const [formData, setFormData] = useState({
-    Condition: '',
-    Type: '',
-    Make: '',
-    'Max Seating': '',
-    Year: '',
-    'Transmission Type': '',
-    'Fuel Type': '',
-    Mileage: ''
+    Condition: carEdit[0].tabOne[0].value,
+    Type: carEdit[0].tabOne[1].value,
+    Make: carEdit[0].tabOne[2].value,
+    'Max Seating': carEdit[0].tabOne[3].value,
+    Year: carEdit[0].tabOne[4].value,
+    'Transmission Type': carEdit[0].tabOne[5].value,
+    'Fuel Type': carEdit[0].tabOne[6].value,
+    Mileage: carEdit[0].tabOne[7].value
   })
 
-  const [features, setFeatures] = useState([])
+  const [features, setFeatures] = useState(carEdit[0].tabTwo)
   const [newFeature, setNewFeature] = useState('')
 
   const handleAddFeature = () => {
@@ -70,12 +65,12 @@ export default function AddCar({ onClose }) {
   }
 
   const [extraInfo, setExtraInfo] = useState({
-    Length: '',
-    Width: '',
-    Height: '',
-    Wheelbase: '',
-    'Curb Weight': '',
-    'Trunk Capacity': ''
+    Length: carEdit[0].tabThree[0].value,
+    Width: carEdit[0].tabThree[1].value,
+    Height: carEdit[0].tabThree[2].value,
+    Wheelbase: carEdit[0].tabThree[3].value,
+    'Curb Weight': carEdit[0].tabThree[4].value,
+    'Trunk Capacity': carEdit[0].tabThree[5].value
   })
 
   const isStepOptional = (step) => {
@@ -152,7 +147,6 @@ export default function AddCar({ onClose }) {
       !extraInfo['Curb Weight'] ||
       !extraInfo['Trunk Capacity']
     ) {
-      setOpen(false)
       toast.error('Please fill in all the fields. !', {
         position: 'top-center',
         autoClose: 2000,
@@ -166,7 +160,7 @@ export default function AddCar({ onClose }) {
       return
     } else {
       const data = {
-        car_id: nanoid(),
+        car_id: carEdit[0].car_id,
         carName: carInfo.carName,
         price: {
           originalPrice: carInfo.originalPrice,
@@ -242,7 +236,7 @@ export default function AddCar({ onClose }) {
           { label: 'Email', value: 'chetan@carhouse.com' }
         ]
       }
-      dispatch(addCar(data))
+      dispatch(updateCar(carEdit[0].car_id, data))
       toast.success('car successfull added', {
         position: 'top-center',
         autoClose: 1000,
@@ -256,6 +250,7 @@ export default function AddCar({ onClose }) {
       setOpen(false)
     }
   }
+
   return (
     <>
       <Modal
@@ -264,7 +259,10 @@ export default function AddCar({ onClose }) {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description">
         <Box sx={style}>
-          <Box sx={{ width: '100%' }}>
+          <Typography variant="h6" sx={{ display: 'flex', justifyContent: 'center' }}>
+            Edit Car Details
+          </Typography>
+          <Box sx={{ width: '100%', marginTop: 2 }}>
             <Stepper activeStep={activeStep} alternativeLabel={isSmallScreen}>
               {steps.map((label, index) => {
                 const stepProps = {}
@@ -286,6 +284,13 @@ export default function AddCar({ onClose }) {
                   All steps completed - you&apos;re finished
                 </Typography>
                 <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                  <Button
+                    color="inherit"
+                    disabled={activeStep === 0}
+                    onClick={handleBack}
+                    sx={{ mr: 1 }}>
+                    Back
+                  </Button>
                   <Box sx={{ flex: '1 1 auto' }} />
                   <Button onClick={handleSubmit}>Submit</Button>
                 </Box>
