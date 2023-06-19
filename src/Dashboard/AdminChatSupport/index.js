@@ -9,7 +9,7 @@ const AdminChatSupport = () => {
       <SideBar>
         <ChatEngine
           height="75vh"
-          projectID="08b634e6-f6e7-479c-a9b2-730d5ddb76cd"
+          projectID="fed9d145-8d8f-44c1-977a-18339e9a5e89"
           userName="Chetan_Kochiyaniya"
           userSecret="Chetan@2020"
         />
