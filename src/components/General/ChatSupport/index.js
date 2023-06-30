@@ -87,7 +87,7 @@ const ChatSupport = () => {
             email: loggedInUser[0]?.values.email,
             secret: loggedInUser[0]?.values.email
           },
-          { headers: { 'Private-Key': 'a49e3858-a1a0-4dd6-9a05-651159343466' } }
+          { headers: { 'Private-Key': '7746f2b4-c951-4bc3-90e2-1d527bb4d997' } }
         )
         .then((r) => callback(r.data))
         .catch(() => showErrorToast('API Error : Create user error'))
@@ -100,7 +100,7 @@ const ChatSupport = () => {
         { usernames: [loggedInUser[0]?.values.email, 'Chetan_Kochiyaniya'], is_direct_chat: true },
         {
           headers: {
-            'Project-ID': 'fed9d145-8d8f-44c1-977a-18339e9a5e89',
+            'Project-ID': 'e063e62e-9429-4735-9b55-18fe21b973f5',
             'User-Name': loggedInUser[0]?.values.email,
             'User-Secret': loggedInUser[0]?.values.email
           }
@@ -134,7 +134,7 @@ const ChatSupport = () => {
         method: 'post',
         url: `https://api.chatengine.io/chats/${chatId}/messages/`,
         headers: {
-          'Project-ID': 'fed9d145-8d8f-44c1-977a-18339e9a5e89',
+          'Project-ID': 'e063e62e-9429-4735-9b55-18fe21b973f5',
           'User-Name': user.username,
           'User-Secret': user.username,
           'Content-Type': 'application/json'
@@ -162,7 +162,7 @@ const ChatSupport = () => {
       try {
         const response = await axios.get(`https://api.chatengine.io/chats/${chat.id}/messages/`, {
           headers: {
-            'Project-ID': 'fed9d145-8d8f-44c1-977a-18339e9a5e89',
+            'Project-ID': 'e063e62e-9429-4735-9b55-18fe21b973f5',
             'User-Name': loggedInUser[0]?.values.email,
             'User-Secret': loggedInUser[0]?.values.email
           }
